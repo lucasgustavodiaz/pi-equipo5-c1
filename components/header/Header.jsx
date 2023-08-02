@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import ThemeButton from '@/components/ThemeButton'
-import Hamburguer from './Hamburguer'
+import ThemeButton from '@/components/header/ThemeButton'
+import Hamburguer from '@/components/header/Hamburguer'
 
 export default function Header() {
   return (
