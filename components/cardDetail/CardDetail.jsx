@@ -1,10 +1,14 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
-export const CardDetail = ({ urls }) => {
+export const CardDetail = ({ urls, id }) => {
   const onClick = () => {};
   return (
-    <div className="flex flex-wrap justify-center">
-      <div className="flex flex-col justify-center items-center bg-white rounded-lg shadow-md w-full m-4 overflow-hidden sm:w-52">
+    <Link
+      className="flex flex-wrap justify-center"
+      href={`/listado/detail/${id}`}
+    >
+      <div className="m-4 flex w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-white shadow-md sm:w-52">
         <img
           src={urls.regular}
           style={{ height: '150px', width: '260px', margin: '10px' }}
@@ -15,15 +19,12 @@ export const CardDetail = ({ urls }) => {
           //   className="h-200 m-6"
         />
 
-        <h2 className="text-center px-2 pb-5">titulo del detalle</h2>
+        <h2 className="px-2 pb-5 text-center">titulo del detalle</h2>
 
-        <a
-          href="#"
-          className="bg-blue-500 text-white p-3 text-center hover:bg-blue-800 transition-all duration-500"
-        >
+        <div className="bg-blue-500 p-3 text-center text-white transition-all duration-500 hover:bg-blue-800">
           Aca van los detalles del detalle!!!!
-        </a>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
