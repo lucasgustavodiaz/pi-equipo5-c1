@@ -4,10 +4,7 @@ import Link from 'next/link';
 export const CardDetail = ({ urls, id }) => {
   const onClick = () => {};
   return (
-    <Link
-      className="flex flex-wrap justify-center"
-      href={`/listado/detail/${id}`}
-    >
+    <Link className="flex flex-wrap justify-center" href={`/detail/${id}`}>
       <div className="m-4 flex w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-white shadow-md sm:w-52">
         <img
           src={urls.regular}

@@ -1,83 +1,24 @@
-export default function Home() {
+import { CardDetail } from '@/components/cardDetail/CardDetail';
+
+async function getHeader() {
+  // const myUrl = `https://api.unsplash.com/search/photos/?client_id=Oqz6xcqH_uiRhQGDrd-76c0n6ITxvnKfPdTtnBUibT4&query=yachts`;
+  const response = await fetch('http://localhost:3001/results', {
+    cache: 'no-store',
+    // next: { revalidate: 10 },
+  });
+  const data = await response.json();
+  return data;
+}
+
+export default async function Home() {
+  const results = await getHeader();
+
   return (
-    <section className="py-8">
-      <div className="container">
-        <h1 className="pb-7 text-3xl font-bold">
-          Alquiler de barcos en Argentina
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eum
-          officiis quibusdam laboriosam vel! Dolor nostrum voluptate porro
-          facere? Quaerat praesentium nihil voluptatibus dolores ad nobis
-          distinctio, quisquam modi ea!
-        </p>
-      </div>
-    </section>
+    <div className="grid grid-cols-5">
+      {results &&
+        results.map(({ id, urls }) => (
+          <CardDetail key={id} urls={urls} id={id} />
+        ))}
+    </div>
   );
 }
