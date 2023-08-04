@@ -1,9 +1,9 @@
-import { CardDetail } from '../cardDetail/CardDetail';
+import { CardDetail } from "../cardDetail/CardDetail";
 
 async function getHeader() {
   // const myUrl = `https://api.unsplash.com/search/photos/?client_id=Oqz6xcqH_uiRhQGDrd-76c0n6ITxvnKfPdTtnBUibT4&query=yachts`;
-  const response = await fetch('http://localhost:3001/results', {
-    cache: 'no-store',
+  const response = await fetch("http://localhost:8081/api/all", {
+    cache: "no-store",
     // next: { revalidate: 10 },
   });
   const data = await response.json();
@@ -21,15 +21,19 @@ export default async function ListadoHome() {
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
           {results &&
-            results.map(({ id, urls, user, alt_description }) => (
-              <CardDetail
-                key={id}
-                urls={urls}
-                id={id}
-                user={user}
-                alt_description={alt_description}
-              />
-            ))}
+            results.map(
+              ({ imageUrl, id, name, description, pricePerDay, category }) => (
+                <CardDetail
+                  key={id}
+                  imageUrl={imageUrl + "1.png"}
+                  id={id}
+                  name={name}
+                  description={description}
+                  pricePerDay={pricePerDay}
+                  category={category}
+                />
+              )
+            )}
         </div>
       </div>
     </main>
