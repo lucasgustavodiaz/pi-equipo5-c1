@@ -1,25 +1,29 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const CardDetail = ({ urls, id }) => {
+export const CardDetail = ({ urls, id, user, alt_description }) => {
   return (
-    <Link className="flex flex-wrap justify-center" href={`/detail/${id}`}>
-      <div className="m-4 flex w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-white shadow-md sm:w-52">
+    <Link className="group relative" href={`/detail/${id}`}>
+      <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
         <img
           src={urls.regular}
-          style={{ height: '150px', width: '260px', margin: '10px' }}
-
-          //   alt=""
-          //   width={180}
-          //   height={200}
-          //   className="h-200 m-6"
+          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         />
-
-        <h2 className="px-2 pb-5 text-center">titulo del detalle</h2>
-
-        <div className="bg-blue-500 p-3 text-center text-white transition-all duration-500 hover:bg-blue-800">
-          Aca van los detalles del detalle!!!!
+      </div>
+      <div className="mt-4 flex justify-between">
+        <div>
+          <h2 className="text-sm text-gray-700">{alt_description}</h2>
+          <p className="mt-1 text-sm text-gray-500">Por: {user.name}</p>
         </div>
+        <p className="text-sm font-medium text-gray-900"> u$ 20.000</p>
+      </div>
+      <div className="mt-10">
+        <button
+          type="button"
+          className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          RESERVAR AHORA!
+        </button>
       </div>
     </Link>
   );

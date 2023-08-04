@@ -1,4 +1,4 @@
-import { CardDetailB } from '@/components/carDetailB/CardDetailB';
+import { CardDetail } from '@/components/cardDetail/CardDetail';
 
 async function getHeader() {
   // const myUrl = `https://api.unsplash.com/search/photos/?client_id=Oqz6xcqH_uiRhQGDrd-76c0n6ITxvnKfPdTtnBUibT4&query=yachts`;
@@ -22,7 +22,7 @@ export default async function Home() {
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
           {results &&
             results.map(({ id, urls, user, alt_description }) => (
-              <CardDetailB
+              <CardDetail
                 key={id}
                 urls={urls}
                 id={id}
@@ -35,12 +35,3 @@ export default async function Home() {
     </main>
   );
 }
-
-// return (
-//   <div className="grid grid-cols-5">
-//     {results &&
-//       results.map(({ id, urls }) => (
-//         <CardDetail key={id} urls={urls} id={id} />
-//       ))}
-//   </div>
-// );
