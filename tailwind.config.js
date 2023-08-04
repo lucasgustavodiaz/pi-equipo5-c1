@@ -7,6 +7,12 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'sans'],
+        caveat: ['var(--font-caveat)', 'sans']
+      }
+    },
     container: {
       center: true,
       padding: {

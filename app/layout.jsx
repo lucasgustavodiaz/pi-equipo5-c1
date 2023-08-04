@@ -1,12 +1,14 @@
 import './globals.css'
 
-import { Inter } from 'next/font/google'
+import { Inter, Caveat } from 'next/font/google'
 
 import Providers from './providers'
 import Footer from '@/components/footer/Footer'
 import Header from '@/components/header/Header'
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+
+const caveat = Caveat({ subsets: ['latin'], variable: '--font-caveat' })
 
 export const metadata = {
   title: 'Proyecto integrador - Digital House',
@@ -16,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='es' suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${caveat.variable} font-sans`}>
         <Providers>
           <Header />
           <main>{children}</main>

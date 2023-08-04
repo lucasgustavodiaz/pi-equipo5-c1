@@ -1,8 +1,13 @@
+import FormSearch from '@/components/form/FormSearch'
+import Hero from '@/components/pages/home/Hero'
+
 export default function Home() {
   return (
-    <section className='py-8'>
-      <div className='container'>
-        <h1 className='pb-7 text-3xl font-bold'>
+    <section>
+      <Hero />
+      <FormSearch />
+      <div className='container py-10'>
+        <h1 className='font-caveat pb-7 text-3xl font-bold'>
           Alquiler de barcos en Argentina
         </h1>
         <p>
