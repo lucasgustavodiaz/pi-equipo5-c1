@@ -20,7 +20,7 @@
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
-    "@heroicons/react": "^2.0.18",
+    "react-icons": "^4.10.1",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0"
   }

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 
-import { SunIcon, MoonIcon } from '@heroicons/react/24/solid'
+import { BsSunFill, BsMoonStarsFill } from 'react-icons/bs'
 
 export default function ThemeButton() {
   const { theme, setTheme, resolvedTheme } = useTheme()
@@ -28,9 +28,9 @@ export default function ThemeButton() {
       onClick={toggleTheme}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className='h-5 w-5 text-orange-300' />
+        <BsSunFill className='h-5 w-5 text-orange-300' />
       ) : (
-        <MoonIcon className='h-5 w-5 text-slate-800' />
+        <BsMoonStarsFill className='h-5 w-5 text-sky-600' />
       )}
     </button>
   )
