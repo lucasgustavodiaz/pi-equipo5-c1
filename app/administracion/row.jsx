@@ -1,7 +1,7 @@
 import { headers } from "next/dist/client/components/headers";
 
 export function Row(props){
-    const {id, name} = props;
+    const {id, name, urlImage} = props;
     
     async function handleOnDelete(){
         const urlDelete = 'http://localhost:8081/api/delete/' + id;
@@ -23,15 +23,18 @@ export function Row(props){
     }
 
     return(
-        <tr>
-            <td>
-                {id}
+        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <td className='px-6 py-4'>
+                <img className="w-10 h-10 rounded-full" src={`${urlImage}1.png`} alt="imagen de la embarcacion" />
             </td>
-            <td>
+            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {id}
+            </th>
+            <td className='px-6 py-4'>
                 {name}
             </td>
-            <td>
-                <button value={id} onClick={handleOnDelete}>eliminar</button>
+            <td className='px-6 py-4 text-right'>
+                <button value={id} onClick={handleOnDelete} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Eliminar</button>
             </td>
         </tr>
     )
