@@ -12,7 +12,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
+    "next": "^13.4.12",
     "next-themes": "^0.2.1",
     "postcss": "8.4.27",
     "react": "18.2.0",
@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@heroicons/react": "^2.0.18",
-    "json-server": "^0.17.3",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0"
   }
