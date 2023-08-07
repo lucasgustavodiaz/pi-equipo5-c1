@@ -5,7 +5,7 @@ import Hamburguer from '@/components/header/Hamburguer'
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-10 bg-white py-3 dark:bg-[#121212]'>
+    <header className='sticky top-0 z-50 bg-white py-3 dark:bg-[#121212]'>
       <nav className='container flex items-center justify-between'>
         <ul className='flex gap-6'>
           <li>

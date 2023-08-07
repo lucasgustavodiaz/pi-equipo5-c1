@@ -8,11 +8,13 @@ export default function Hero() {
         alt='hero'
         priority={true}
         loading='eager'
+        blurDataURL='data:...'
+        placeholder='blur'
         fill
         style={{ objectFit: 'cover' }}
         quality={100}
       />
-      <h2 className='font-caveat absolute text-center text-6xl text-slate-50 drop-shadow-md sm:text-6xl md:text-7xl xl:text-8xl'>
+      <h2 className='font-autography text-center text-7xl tracking-[-0.04em] text-slate-50 drop-shadow-md md:text-8xl xl:text-9xl'>
         Life is better on the water
       </h2>
     </div>
