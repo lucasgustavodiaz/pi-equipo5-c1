@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import logoLight from '/public/logo-light.svg'
+import logoDark from '/public/logo-dark.svg'
 import ThemeButton from '@/components/header/ThemeButton'
 import Hamburguer from '@/components/header/Hamburguer'
 
@@ -10,7 +12,20 @@ export default function Header() {
         <ul className='flex gap-6'>
           <li>
             <Link href='/'>
-              <Image src='/logo-1.svg' alt='logo' width={101} height={50} />
+              <Image
+                src={logoLight}
+                alt='Picture of the author'
+                className='dark:hidden'
+                width={101}
+                height={50}
+              />
+              <Image
+                src={logoDark}
+                alt='Picture of the author'
+                className='hidden dark:block'
+                width={101}
+                height={50}
+              />
             </Link>
           </li>
         </ul>
