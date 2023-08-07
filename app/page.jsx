@@ -2,7 +2,7 @@ import FormSearch from '@/components/form/FormSearch';
 import ListadoHome from '@/components/listadoHome/ListadoHome';
 import Hero from '@/components/pages/home/Hero';
 
-export default function Home() {
+export default async function Home() {
   return (
     <section>
       <Hero />
