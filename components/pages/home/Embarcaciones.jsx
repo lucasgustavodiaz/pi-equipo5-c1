@@ -4,7 +4,7 @@ import { GiShipWheel } from 'react-icons/gi'
 
 export default function Embarcaciones() {
   return (
-    <div className='relative flex items-center px-4 py-32  md:px-8 md:py-32 lg:h-[798px] '>
+    <div className='relative flex items-center px-4 py-32  md:px-8 lg:h-[798px] '>
       <Image
         src='/h1_images_bg-min.jpg'
         alt='Embarcaciones'
