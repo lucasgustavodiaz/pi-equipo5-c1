@@ -1,6 +1,7 @@
 import FormSearch from '@/components/form/FormSearch'
 import Embarcaciones from '@/components/pages/home/Embarcaciones'
 import Hero from '@/components/pages/home/Hero'
+import Tripulacion from '@/components/pages/home/Tripulacion'
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         </p>
       </div>
       <Embarcaciones />
+      <Tripulacion />
     </section>
   )
 }
