@@ -1,14 +1,14 @@
-import FormSearch from '@/components/form/FormSearch';
-import Embarcaciones from '@/components/pages/home/Embarcaciones';
-import Hero from '@/components/pages/home/Hero';
+import FormSearch from '@/components/form/FormSearch'
+import Embarcaciones from '@/components/pages/home/Embarcaciones'
+import Hero from '@/components/pages/home/Hero'
 
 export default function Home() {
   return (
     <section>
       <Hero />
       <FormSearch />
-      <div className="container py-10">
-        <h1 className="pb-7 text-3xl font-semibold underline decoration-sky-500 decoration-4 underline-offset-4">
+      <div className='container py-10'>
+        <h1 className='pb-7 text-3xl font-semibold underline decoration-sky-500 decoration-4 underline-offset-4'>
           Alquiler de barcos en Argentina
         </h1>
         <p>
@@ -20,5 +20,5 @@ export default function Home() {
       </div>
       <Embarcaciones />
     </section>
-  );
+  )
 }
