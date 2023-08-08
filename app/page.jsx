@@ -20,7 +20,7 @@ export default async function Home() {
         </p>
       </div>
       <Embarcaciones />
-      <RandomProducts />
+      {/* <RandomProducts /> */}
     </section>
   );
 }
