@@ -1,9 +1,9 @@
-import { CardDetail } from "../cardDetail/CardDetail";
+import { CardDetail } from '../cardDetail/CardDetail';
 
 async function getHeader() {
   // const myUrl = `https://api.unsplash.com/search/photos/?client_id=Oqz6xcqH_uiRhQGDrd-76c0n6ITxvnKfPdTtnBUibT4&query=yachts`;
-  const response = await fetch("http://localhost:8081/api/all", {
-    cache: "no-store",
+  const response = await fetch('http://localhost:8081/api/all', {
+    cache: 'no-store',
     // next: { revalidate: 10 },
   });
   const data = await response.json();
@@ -40,7 +40,7 @@ export default async function randomProducts() {
   const randomized = getRandomProducts(results, 10);
 
   return (
-    <main className="bg-white">
+    <main className="mx-auto flex max-w-5xl">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
           Sugeridos
@@ -51,7 +51,7 @@ export default async function randomProducts() {
               ({ imageUrl, id, name, description, pricePerDay, category }) => (
                 <CardDetail
                   key={id}
-                  imageUrl={imageUrl + "1.png"}
+                  imageUrl={imageUrl + '1.png'}
                   id={id}
                   name={name}
                   description={description}

@@ -1,5 +1,18 @@
+import Image from 'next/image';
+import Galeria from '@/components/galeriaImagenes/Galeria';
+import Link from 'next/link';
+
 async function getItem(id) {
   const response = await fetch(`http://localhost:8081/api/${id}`, {
+    cache: 'no-store',
+    // next: { revalidate: 10 },
+  });
+  const data = await response.json();
+  return data;
+}
+
+async function getGallery(id) {
+  const response = await fetch(`http://localhost:8081/api/urlImage/${id}`, {
     cache: 'no-store',
     // next: { revalidate: 10 },
   });
@@ -10,24 +23,29 @@ async function getItem(id) {
 export default async function Detalle({ params }) {
   const index = parseInt(params.id);
   const results = await getItem(index);
-  console.log('hola', results);
-  // const { id, tags, urls, user } = results[index - 1];
+  console.log('RESULTS', results);
+  const imagesGallery = await getGallery(index);
 
   return (
-    <div className="group relative mx-6" href={`/detail/${index}`}>
-      <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-96">
-        <img
-          src={results.imageUrl + '1.png'}
-          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-        />
+    <div className="mx-auto flex max-w-5xl flex-col " href={`/detail/${index}`}>
+      <div className="mr-5 mt-6 flex justify-end">
+        <Link
+          href="/"
+          className="block w-14 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          &lt;
+        </Link>
       </div>
-      <div className="mt-4 flex justify-between">
-        <div>
-          <p className="mt-1 text-sm text-gray-500">{results.description}</p>
-        </div>
-        <p className="text-sm font-medium text-gray-400"> u$ 20.000</p>
+      <div className="ml-5">
+        <h1 className=" mt-2 text-left font-autography text-9xl lowercase tracking-[-0.02em] text-blue-950 drop-shadow-md md:text-8xl xl:text-9xl">
+          {results.name}
+        </h1>
+        <p className="mt-1 text-base text-gray-500">{results.description}</p>
+        <p className="text-base font-medium text-gray-400"> u$ 20.000</p>
       </div>
-      <div className="mt-10">
+      <Galeria imagesGallery={imagesGallery} />
+
+      <div className="mx-5 mt-10">
         <button
           type="button"
           className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
