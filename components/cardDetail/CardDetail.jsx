@@ -1,21 +1,31 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
-export const CardDetail = ({ urls, id, user, alt_description }) => {
+export const CardDetail = ({
+  imageUrl,
+  id,
+  name,
+  description,
+  pricePerDay,
+  category,
+}) => {
   return (
     <Link className="group relative" href={`/detail/${id}`}>
       <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
         <img
-          src={urls.regular}
+          src={imageUrl}
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         />
       </div>
       <div className="mt-4 flex justify-between">
         <div>
-          <h2 className="text-sm text-gray-700">{alt_description}</h2>
-          <p className="mt-1 text-sm text-gray-500">Por: {user.name}</p>
+          <h1 className="mt-1 text-sm text-gray-500">
+            {" "}
+            {name} - {category}
+          </h1>
+          <h2 className="text-sm text-gray-700">{description}</h2>
         </div>
-        <p className="text-sm font-medium text-gray-900"> u$ 20.000</p>
+        <p className="text-sm font-medium text-gray-900"> ${pricePerDay}/Day</p>
       </div>
       <div className="mt-10">
         <button

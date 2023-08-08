@@ -1,5 +1,5 @@
-async function getItem() {
-  const response = await fetch('http://localhost:3001/results', {
+async function getItem(id) {
+  const response = await fetch(`http://localhost:8081/api/${id}`, {
     cache: 'no-store',
     // next: { revalidate: 10 },
   });
@@ -9,20 +9,21 @@ async function getItem() {
 
 export default async function Detalle({ params }) {
   const index = parseInt(params.id);
-  const results = await getItem();
-  const { id, tags, urls, user } = results[index - 1];
+  const results = await getItem(index);
+  console.log('hola', results);
+  // const { id, tags, urls, user } = results[index - 1];
 
   return (
-    <div className="group relative mx-6" href={`/detail/${id}`}>
+    <div className="group relative mx-6" href={`/detail/${index}`}>
       <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-96">
         <img
-          src={urls.regular}
+          src={results.imageUrl + '1.png'}
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         />
       </div>
       <div className="mt-4 flex justify-between">
         <div>
-          <p className="mt-1 text-sm text-gray-500">{user.bio}</p>
+          <p className="mt-1 text-sm text-gray-500">{results.description}</p>
         </div>
         <p className="text-sm font-medium text-gray-400"> u$ 20.000</p>
       </div>
