@@ -6,14 +6,14 @@ export function Row(props){
     async function handleOnDelete(){
         const urlDelete = 'http://localhost:8081/api/delete/' + id;
         try {
-            const response = await fetch(urlDelete, {
+              const response = await fetch(urlDelete, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json'
                 },
               });
             if (!response.ok) {
-              throw new Error("La respuesta no fue correcta. Response: " + response.status);
+              throw new Error("Error al intentar eliminar el registro:. Response: " + response.status);
             } else {
               window.location.reload();
             }
