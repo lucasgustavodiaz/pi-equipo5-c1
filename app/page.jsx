@@ -1,9 +1,8 @@
 import FormSearch from '@/components/form/FormSearch';
 import Embarcaciones from '@/components/pages/home/Embarcaciones';
 import Hero from '@/components/pages/home/Hero';
-import RandomProducts from '@/components/suggested/RandomProducts';
 
-export default async function Home() {
+export default function Home() {
   return (
     <section>
       <Hero />
@@ -20,7 +19,6 @@ export default async function Home() {
         </p>
       </div>
       <Embarcaciones />
-      {/* <RandomProducts /> */}
     </section>
   );
 }
