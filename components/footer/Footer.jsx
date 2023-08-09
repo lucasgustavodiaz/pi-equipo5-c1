@@ -11,7 +11,7 @@ export default function Footer() {
           Todos los derechos reservados.
         </span>
       </div>
-      <Social />
+      <Social color='text-sky-600' />
     </footer>
   )
 }
