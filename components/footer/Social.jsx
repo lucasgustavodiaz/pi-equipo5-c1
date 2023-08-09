@@ -1,6 +1,6 @@
-export default function Social() {
+export default function Social({ color }) {
   return (
-    <div className='flex gap-6 text-sky-600'>
+    <div className={`flex justify-center gap-6 ${color}`}>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         className='h-5 w-5'
