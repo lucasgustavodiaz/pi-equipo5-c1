@@ -1,5 +1,4 @@
 'use client'
-import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Row } from './row'
 import { Form } from './registrar/form'
@@ -8,7 +7,6 @@ import { Modal } from './registrar/modal'
 export default function Page() {
   const [data, setData] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const urlGetYacht = 'http://localhost:8081/api/all'
   async function fetchData() {
@@ -31,21 +29,6 @@ export default function Page() {
     fetchData()
   }, [])
 
-  // useEffect(() => {
-  //   // Función para actualizar el estado del ancho de la ventana
-  //   const handleResize = () => {
-  //     setWindowWidth(window.innerWidth);
-  //   };
-
-  //   // Agregar el listener para el evento de cambio de tamaño
-  //   window.addEventListener('resize', handleResize);
-
-  //   // Limpieza: remover el listener cuando el componente se desmonta
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
-
   const handleOpenModal = () => {
     setModalOpen(true)
   }
@@ -56,14 +39,20 @@ export default function Page() {
 
   return (
     <>
-      <div className='lg:hidden container min-h-screen flex justify-center items-center'>
-        <div className='flex justify-center items-center box-border h-100 w-100 p-4 text-red-800 rounded-lg bg-red-300 dark:text-red-600 text-lg' role='alert'>
-          <p><span className="font-medium">Alerta!</span> El panel de administrador no esta disponible en dispositivos móviles</p>
+      <div className='container flex min-h-screen items-center justify-center lg:hidden'>
+        <div
+          className='h-100 w-100 box-border flex items-center justify-center rounded-lg bg-red-300 p-4 text-lg text-red-800 dark:text-red-600'
+          role='alert'
+        >
+          <p>
+            <span className='font-medium'>Alerta!</span> El panel de
+            administrador no esta disponible en dispositivos móviles
+          </p>
         </div>
       </div>
-      
+
       <div className='hidden lg:block'>
-        <div className='container mt-5 block flex items-center justify-between p-0'>
+        <div className='container mt-5 flex items-center justify-between p-0'>
           <h1>Hola, Administrador!</h1>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
