@@ -33,9 +33,11 @@ export default function Header() {
           <button className='hidden rounded border border-sky-500 bg-transparent px-4 py-2 font-semibold text-sky-700 hover:border-transparent hover:bg-sky-500 hover:text-white dark:text-white sm:block'>
             Crear cuenta
           </button>
-          <button className='hidden rounded border border-sky-500 bg-transparent px-4 py-2 font-semibold text-sky-700 hover:border-transparent hover:bg-sky-500 hover:text-white dark:text-white sm:block'>
-            Inicio de sesión
-          </button>
+          <Link href='/administracion'>
+            <button className='hidden rounded border border-sky-500 bg-transparent px-4 py-2 font-semibold text-sky-700 hover:border-transparent hover:bg-sky-500 hover:text-white dark:text-white sm:block'>
+              Inicio de sesión
+            </button>
+          </Link>
           <ThemeButton />
           <Hamburguer />
         </div>
