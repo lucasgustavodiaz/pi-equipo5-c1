@@ -62,7 +62,7 @@ export default function FormSearch() {
               placeholder='Elija el tipo de barco'
             />
           </div>
-          <button className='h-12 w-full rounded border border-sky-500 bg-sky-500 px-4 py-2 font-semibold text-white hover:bg-sky-700 lg:mt-8 lg:min-w-[125px] lg:max-w-[176px]'>
+          <button className='trasition h-12 w-full rounded border border-sky-500 bg-sky-500 px-4 py-2 font-semibold text-white transition ease-in-out hover:bg-sky-900 lg:mt-8 lg:min-w-[125px] lg:max-w-[176px]'>
             Buscar <BiSearch className='ml-2 inline-block h-6 w-6' />
           </button>
         </div>

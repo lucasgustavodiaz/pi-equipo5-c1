@@ -1,31 +1,30 @@
-'use client';
-import { useState } from 'react';
-import SmallGallery from './SmallGallery';
-import Image from 'next/image';
+'use client'
+import { useState } from 'react'
+import SmallGallery from './SmallGallery'
 
-import FullGalery from './FullGalery';
+import FullGalery from './FullGalery'
 
 const Galeria = ({ imagesGallery }) => {
-  const [button, setButton] = useState(true);
+  const [button, setButton] = useState(true)
 
   const handleShowMore = () => {
-    setButton(!button);
-  };
+    setButton(!button)
+  }
 
   return (
     <>
       <SmallGallery imagesGallery={imagesGallery} />
       {!button && <FullGalery imagesGallery={imagesGallery} />}
-      <div className="m-5 flex  justify-center sm:flex sm:justify-end">
+      <div className='flex justify-center pt-4 sm:flex sm:justify-end'>
         <button
-          className="cursor-pointer rounded bg-blue-500 px-4 py-2  font-bold text-white hover:bg-blue-600"
+          className='cursor-pointer rounded bg-sky-500 px-4 py-2 font-bold text-white transition ease-in-out hover:bg-sky-900'
           onClick={handleShowMore}
         >
           {button ? 'Ver más' : 'Ver menos'}
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Galeria;
+export default Galeria

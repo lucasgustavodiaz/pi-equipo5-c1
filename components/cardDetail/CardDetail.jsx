@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
+import { BsStarFill } from 'react-icons/bs'
 
 export const CardDetail = ({
   imageUrl,
@@ -7,39 +8,59 @@ export const CardDetail = ({
   name,
   description,
   pricePerDay,
-  category,
+  category
 }) => {
   return (
     <Link
-      className="group relative flex min-h-full flex-col"
+      className='group relative flex max-w-[450px] flex-col rounded-lg border'
       href={`/detail/${id}`}
     >
-      <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
-        <img
+      <div className='relative h-52 w-full group-hover:opacity-90 lg:h-60'>
+        <Image
           src={imageUrl}
-          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+          alt='Picture of the author'
+          loading='eager'
+          blurDataURL='data:...'
+          placeholder='blur'
+          fill
+          sizes='(max-width: 768px) 100vw'
+          style={{ objectFit: 'cover' }}
+          className='rounded-t-lg'
         />
       </div>
-      <div className="my-2 flex flex-col">
-        <div className="flex items-start justify-between ">
-          <h4 className="my-1 text-lg font-extrabold ">
-            {name} - {category}
+      <div className='group-hover:bg-white'>
+        <div className='flex flex-col px-5 py-6 text-xs sm:px-7'>
+          <div className='flex justify-between'>
+            <h5 className='font-semibold text-sky-500'>{category}</h5>
+            <div className='flex'>
+              <BsStarFill className='mr-2 inline-block h-[14px] w-[14px] text-sky-500' />
+              <span className='font-medium text-gray-500'>4.6/5</span>
+            </div>
+          </div>
+          <h4 className='my-1 truncate text-lg font-bold text-sky-900'>
+            {name}
           </h4>
-          <h4 className="my-1 text-lg font-light text-gray-500">
-            {' '}
-            ${pricePerDay}/Day
-          </h4>
+          <div className='h-[2.5em] text-gray-500'>
+            <p className='line-clamp-2 text-sm leading-[1.5em]'>
+              {description}
+            </p>
+          </div>
         </div>
-        <p className="text-sm ">{description}</p>
-      </div>
-      <div className="mb-10 items-end ">
-        <button
-          type="button"
-          className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          ver mas
-        </button>
+        <div className=' flex items-center justify-between border-t px-7 py-4'>
+          <h3 className='mr-2 text-lg font-extrabold leading-none text-sky-500'>
+            <span className='text-[0.65rem] uppercase text-gray-500'>
+              Por noche
+            </span>{' '}
+            ${pricePerDay}
+          </h3>
+          <button
+            type='button'
+            className='w-full max-w-[136px] rounded-md border-sky-500 bg-sky-500 px-4 py-2 font-semibold text-white transition ease-in-out hover:bg-sky-900'
+          >
+            Alquilar
+          </button>
+        </div>
       </div>
     </Link>
-  );
-};
+  )
+}
