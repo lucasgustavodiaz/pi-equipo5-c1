@@ -38,10 +38,10 @@ export default function Page() {
   }
 
   return (
-    <>
-      <div className='container flex min-h-screen items-center justify-center lg:hidden'>
+    <div className='container '>
+      <div className='flex min-h-screen items-center justify-center lg:hidden'>
         <div
-          className='h-100 w-100 box-border flex items-center justify-center rounded-lg bg-red-300 p-4 text-lg text-red-800 dark:text-red-600'
+          className='box-border flex items-center justify-center rounded-lg bg-red-300 p-4 text-lg text-red-800 dark:text-red-600'
           role='alert'
         >
           <p>
@@ -51,9 +51,9 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='hidden lg:block'>
-        <div className='container mt-5 flex items-center justify-between p-0'>
-          <h1>Hola, Administrador!</h1>
+      <div className='hidden min-h-screen lg:block'>
+        <div className=' mt-5 flex items-center justify-between p-0'>
+          <h1>Hola 👋, Administrador!</h1>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
             onClick={handleOpenModal}
@@ -96,6 +96,6 @@ export default function Page() {
           <Form />
         </Modal>
       </div>
-    </>
+    </div>
   )
 }
