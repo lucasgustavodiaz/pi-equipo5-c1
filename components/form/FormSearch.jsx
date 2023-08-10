@@ -7,7 +7,7 @@ import {
 
 export default function FormSearch() {
   return (
-    <div className='container mb-[510px] sm:mb-96 lg:mb-20'>
+    <div className='container'>
       <div className='relative'>
         <div className='absolute -top-20 left-0 flex w-full flex-col items-center gap-4 rounded-lg bg-white px-5 py-5 drop-shadow-md lg:flex-row lg:gap-2 lg:px-10 lg:py-9 xl:gap-6 xl:px-16'>
           <div className='mb-6 w-full lg:mb-0'>

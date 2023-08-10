@@ -27,7 +27,7 @@ export default async function RandomProducts() {
   const randomized = getRandomProducts(results, 10)
 
   return (
-    <div className='bg-[#f2f5fa]'>
+    <div className='bg-[#f2f5fa] pt-[510px] sm:pt-96 lg:pt-20'>
       <div className='container py-20'>
         <SectionTitle antetitulo='reservá hoy' titulo='Destacados' />
         <div className='flex justify-center'>
