@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logoLight from '/public/logo-light.svg'
-import logoDark from '/public/logo-dark.svg'
+import logoLight from '/public/logo-light1.svg'
+import logoDark from '/public/logo-dark1.svg'
 import ThemeButton from '@/components/header/ThemeButton'
 import Hamburguer from '@/components/header/Hamburguer'
 
@@ -16,15 +16,15 @@ export default function Header() {
                 src={logoLight}
                 alt='Picture of the author'
                 className='dark:hidden'
-                width={101}
-                height={50}
+                width={240}
+                height={120}
               />
               <Image
                 src={logoDark}
                 alt='Picture of the author'
                 className='hidden dark:block'
-                width={101}
-                height={50}
+                width={240}
+                height={120}
               />
             </Link>
           </li>
