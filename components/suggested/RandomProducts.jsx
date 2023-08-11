@@ -24,7 +24,7 @@ function getRandomProducts(array, numProducts) {
 
 export default async function RandomProducts() {
   const results = await getHeader()
-  const randomized = getRandomProducts(results, 10)
+  const randomized = getRandomProducts(results, 9)
 
   return (
     <div className='bg-[#f2f5fa] pt-[510px] sm:pt-96 lg:pt-20'>

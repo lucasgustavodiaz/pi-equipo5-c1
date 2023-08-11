@@ -15,7 +15,7 @@ export const CardDetail = ({
       className='group relative flex max-w-[450px] flex-col rounded-lg border sm:max-w-full'
       href={`/detail/${id}`}
     >
-      <div className='relative h-52 w-full group-hover:opacity-90 lg:h-60'>
+      <div className='relative h-52 w-full transition ease-in-out group-hover:opacity-90 lg:h-60'>
         <Image
           src={imageUrl}
           alt='Picture of the author'

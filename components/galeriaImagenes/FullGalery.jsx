@@ -5,37 +5,57 @@ import Image from 'next/image'
 const FullGalery = ({ imagesGallery }) => {
   return (
     <>
-      <div className='flex w-full flex-col gap-3 p-3 pb-0 md:flex-row'>
-        <div className='w-full sm:w-full md:w-1/4'>
-          <img
-            alt='gallery'
-            className='mt-3 h-auto w-full rounded object-cover shadow-md sm:mt-0'
+      <div className='grid grid-cols-2 gap-3 pt-3 md:grid-cols-4'>
+        <div className='relative aspect-[4/2.8]'>
+          <Image
             src={imagesGallery[5].url}
-            fill
+            alt='gallery'
+            loading='eager'
+            blurDataURL='data:...'
+            placeholder='blur'
+            width={730}
+            height={530}
+            style={{ objectFit: 'cover' }}
+            className='h-full rounded-lg'
           />
         </div>
-        <div className='w-full sm:w-full md:w-1/4 '>
-          <img
-            alt='gallery'
-            className='mt-3 h-auto w-full rounded object-cover shadow-md sm:mt-0'
+        <div className='relative aspect-[4/2.8]'>
+          <Image
             src={imagesGallery[6].url}
-            fill
+            alt='gallery'
+            loading='eager'
+            blurDataURL='data:...'
+            placeholder='blur'
+            width={730}
+            height={530}
+            style={{ objectFit: 'cover' }}
+            className='h-full rounded-lg'
           />
         </div>
-        <div className='w-full sm:w-full md:w-1/4 '>
-          <img
-            alt='gallery'
-            className='mt-3 h-auto w-full rounded object-cover shadow-md sm:mt-0'
+        <div className='relative aspect-[4/2.8]'>
+          <Image
             src={imagesGallery[7].url}
-            fill
+            alt='gallery'
+            loading='eager'
+            blurDataURL='data:...'
+            placeholder='blur'
+            width={730}
+            height={530}
+            style={{ objectFit: 'cover' }}
+            className='h-full rounded-lg'
           />
         </div>
-        <div className='w-full sm:w-full md:w-1/4 '>
-          <img
-            alt='gallery'
-            className='mt-3 h-auto w-full rounded object-cover shadow-md sm:mt-0'
+        <div className='relative aspect-[4/2.8]'>
+          <Image
             src={imagesGallery[8].url}
-            fill
+            alt='gallery'
+            loading='eager'
+            blurDataURL='data:...'
+            placeholder='blur'
+            width={730}
+            height={530}
+            style={{ objectFit: 'cover' }}
+            className='h-full rounded-lg'
           />
         </div>
       </div>
