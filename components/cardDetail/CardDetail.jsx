@@ -12,10 +12,10 @@ export const CardDetail = ({
 }) => {
   return (
     <Link
-      className='group relative flex max-w-[450px] flex-col rounded-lg border sm:max-w-full'
+      className='group relative flex max-w-[450px] flex-col overflow-hidden rounded-lg border shadow-md sm:max-w-full'
       href={`/detail/${id}`}
     >
-      <div className='relative h-52 w-full transition ease-in-out group-hover:opacity-90 lg:h-60'>
+      <div className='relative h-52 w-full overflow-hidden lg:h-60'>
         <Image
           src={imageUrl}
           alt='Picture of the author'
@@ -25,10 +25,10 @@ export const CardDetail = ({
           fill
           sizes='(max-width: 768px) 100vw'
           style={{ objectFit: 'cover' }}
-          className='rounded-t-lg'
+          className='transform rounded-t-lg transition duration-300 ease-in-out hover:scale-105'
         />
       </div>
-      <div className='group-hover:bg-white'>
+      <div className='transition duration-300 ease-in-out group-hover:bg-white'>
         <div className='flex flex-col px-5 py-6 text-xs sm:px-7'>
           <div className='flex justify-between'>
             <h5 className='font-semibold text-sky-500'>{category}</h5>
