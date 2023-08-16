@@ -12,7 +12,7 @@ export const CardDetail = ({
 }) => {
   return (
     <Link
-      className='group relative flex max-w-[450px] flex-col overflow-hidden rounded-lg border shadow-md sm:max-w-full'
+      className='group relative flex max-w-[450px] flex-col overflow-hidden rounded-lg border shadow-md transition-transform duration-300 ease-in-out hover:scale-[1.02] sm:max-w-full'
       href={`/detail/${id}`}
     >
       <div className='relative h-52 w-full overflow-hidden lg:h-60'>
@@ -25,7 +25,7 @@ export const CardDetail = ({
           fill
           sizes='(max-width: 768px) 100vw'
           style={{ objectFit: 'cover' }}
-          className='transform rounded-t-lg transition duration-300 ease-in-out hover:scale-105'
+          className=' rounded-t-lg '
         />
       </div>
       <div className='transition duration-300 ease-in-out group-hover:bg-white'>
