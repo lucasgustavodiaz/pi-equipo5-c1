@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <div className='relative flex h-[60vh] items-center justify-center'>
+    <div className='relative flex h-[50vh] items-center justify-center lg:h-[73vh]'>
       <Image
         src='/bg1-2.jpg'
         alt='hero'
@@ -14,7 +14,7 @@ export default function Hero() {
         style={{ objectFit: 'cover' }}
         quality={100}
       />
-      <h2 className='font-autography text-center text-7xl tracking-[-0.04em] text-slate-50 drop-shadow-md md:text-8xl xl:text-9xl'>
+      <h2 className='text-center font-autography text-7xl tracking-[-0.04em] text-slate-50 drop-shadow-md md:text-8xl xl:text-9xl'>
         Life is better on the water
       </h2>
     </div>
