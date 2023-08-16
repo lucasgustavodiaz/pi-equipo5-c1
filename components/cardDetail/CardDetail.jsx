@@ -25,7 +25,7 @@ export const CardDetail = ({
           fill
           sizes='(max-width: 768px) 100vw'
           style={{ objectFit: 'cover' }}
-          className=' rounded-t-lg '
+          className='rounded-t-lg transition duration-150 ease-in-out group-hover:brightness-105'
         />
       </div>
       <div className='transition duration-300 ease-in-out group-hover:bg-white'>
