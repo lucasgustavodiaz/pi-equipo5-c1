@@ -2,7 +2,9 @@ import SectionTitle from '../SectionTitle'
 import { CardDetail } from '../cardDetail/CardDetail'
 
 async function getHeader() {
-  const response = await fetch('http://localhost:8081/api/all', {
+  const hostUrl = process.env.HOST_URL
+
+  const response = await fetch(`${hostUrl}/api/all`, {
     cache: 'no-store'
   })
   const data = await response.json()
@@ -27,7 +29,7 @@ export default async function RandomProducts() {
   const randomized = getRandomProducts(results, 9)
 
   return (
-    <div className='bg-[#f2f5fa] pt-[510px] sm:pt-96 lg:pt-20'>
+    <div className='bg-[#f2f5fa]'>
       <div className='container py-20'>
         <SectionTitle antetitulo='reservá hoy' titulo='Destacados' />
         <div className='flex justify-center'>
