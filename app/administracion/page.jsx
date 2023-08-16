@@ -7,8 +7,10 @@ import { Modal } from './registrar/modal'
 export default function Page() {
   const [data, setData] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
+  const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
+  const apiUrl = `${hostUrl}/api/all`
 
-  const urlGetYacht = 'http://localhost:8081/api/all'
+  const urlGetYacht = apiUrl
   async function fetchData() {
     try {
       const response = await fetch(urlGetYacht)
@@ -27,7 +29,7 @@ export default function Page() {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  })
 
   const handleOpenModal = () => {
     setModalOpen(true)

@@ -2,7 +2,7 @@ import SectionTitle from '../SectionTitle'
 import { CardDetail } from '../cardDetail/CardDetail'
 
 async function getHeader() {
-  const hostUrl = process.env.HOST_URL
+  const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
 
   const response = await fetch(`${hostUrl}/api/all`, {
     cache: 'no-store'

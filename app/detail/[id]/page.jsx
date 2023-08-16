@@ -1,10 +1,13 @@
-import Image from 'next/image'
 import Galeria from '@/components/galeriaImagenes/Galeria'
 import Link from 'next/link'
 import { BsArrowLeft } from 'react-icons/bs'
 
+const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
+const itemsUrl = `${hostUrl}/api/`
+const imageUrl = `${hostUrl}/api/urlImage/`
+
 async function getItem(id) {
-  const response = await fetch(`http://localhost:8081/api/${id}`, {
+  const response = await fetch(itemsUrl + id, {
     cache: 'no-store'
     // next: { revalidate: 10 },
   })
@@ -13,7 +16,7 @@ async function getItem(id) {
 }
 
 async function getGallery(id) {
-  const response = await fetch(`http://localhost:8081/api/urlImage/${id}`, {
+  const response = await fetch(imageUrl + id, {
     cache: 'no-store'
     // next: { revalidate: 10 },
   })

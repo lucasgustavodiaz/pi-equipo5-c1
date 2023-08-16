@@ -63,7 +63,8 @@ export function Form() {
       available: available
     }
     console.log(JSON.stringify(yacht))
-    const urlPost = 'http://localhost:8081/api/create'
+    const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
+    const urlPost = `${hostUrl}/api/create`
     const opcion = confirm(
       `Seguro que desea crear un registro para el yate: ${name} con el sku: ${sku}`
     )

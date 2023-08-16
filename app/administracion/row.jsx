@@ -1,10 +1,10 @@
-import { headers } from 'next/dist/client/components/headers'
-
 export function Row(props) {
   const { id, name, urlImage } = props
 
   async function handleOnDelete() {
-    const urlDelete = 'http://localhost:8081/api/delete/' + id
+    const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
+    const urlDelete = `${hostUrl}/api/delete` + id
+
     const opcion = confirm(`Desea eliminar el registro con el id: ${id}`)
     if (opcion) {
       try {
