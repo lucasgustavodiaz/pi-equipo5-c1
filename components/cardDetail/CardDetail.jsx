@@ -12,7 +12,7 @@ export const CardDetail = ({
 }) => {
   return (
     <Link
-      className='group relative flex max-w-[450px] flex-col overflow-hidden rounded-lg border shadow-md sm:max-w-full'
+      className='group relative flex max-w-[450px] flex-col overflow-hidden rounded-lg border shadow-md transition-transform duration-200 ease-out hover:scale-105 sm:max-w-full'
       href={`/detail/${id}`}
     >
       <div className='relative h-52 w-full overflow-hidden lg:h-60'>
