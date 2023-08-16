@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export function Form() {
   const [name, setName] = useState('')
@@ -10,8 +10,10 @@ export function Form() {
   const [pricePerDay, setPricePerDay] = useState('')
   const [pricePerWeek, setPricePerWeek] = useState('')
   const [pricePerHour, setPricePerHour] = useState('')
-  const [category, setCategory] = useState('SAILBOAT')
+  const [categoryId, setCategoryId] = useState('')
+  const [categories, setCategories] = useState([]);
   const [available, setAvailable] = useState(true)
+ 
 
   function handleChangeName(e) {
     setName(e.target.value)
@@ -59,7 +61,7 @@ export function Form() {
       pricePerDay: pricePerDay,
       pricePerWeek: pricePerWeek,
       pricePerHour: pricePerHour,
-      category: category,
+      categoryId: category,
       available: available
     }
     console.log(JSON.stringify(yacht))
@@ -106,6 +108,27 @@ export function Form() {
     setCategory(category)
     setAvailable(true)
   }
+
+  async function fetchCategories() {
+    const urlGetCategories = 'http://localhost:8081/api/category/all' 
+    try {
+      const response = await fetch(urlGetCategories)
+      if (!response.ok) {
+        throw new Error(
+          'Error al intentar cargar todas las categorias: . Response: ' +
+            response.status
+        )
+      }
+      const jsonData = await response.json()
+      setCategories(jsonData)
+    } catch (error) {
+      console.error('Error cargando las categorias: ', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
 
   return (
     <form
@@ -242,11 +265,10 @@ export function Form() {
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             >
               <optgroup label='Categoria'>
-                <option value='SAILBOAT'>Velero</option>
-                <option value='MOTORBOAT'>Barco a motor</option>
-                <option value='CATAMARAN'>Catamaran</option>
-                <option value='YACHT'>Yate</option>
-                <option value='JETSKI'>Jet ski</option>
+                <option value='1'>Velero</option>
+                {categories.map(category => (
+                <option key={category.id} value={category.id}>{category.name}</option>
+              ))}
               </optgroup>
             </select>
           </div>
