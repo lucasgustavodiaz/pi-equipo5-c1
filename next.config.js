@@ -1,26 +1,4 @@
 module.exports = {
-  async headers() {
-    return [
-      {
-        source: '/',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: 'upgrade-insecure-requests'
-          }
-        ],
-
-        source: '/administracion', // Cambia esto a tus rutas específicas
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: 'upgrade-insecure-requests'
-          }
-        ]
-      }
-    ]
-  },
-
   images: {
     remotePatterns: [
       {
