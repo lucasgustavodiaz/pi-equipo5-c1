@@ -9,7 +9,7 @@ export default function FormSearch() {
   return (
     <div className='container'>
       <div className='relative'>
-        <div className='absolute -top-20 left-0 flex w-full flex-col items-center gap-4 rounded-lg bg-white px-5 py-5 drop-shadow-md lg:flex-row lg:gap-2 lg:px-10 lg:py-9 xl:gap-6 xl:px-16'>
+        <div className='absolute -top-20 left-0 z-10 flex w-full flex-col items-center gap-4 rounded-lg bg-white px-5 py-5 drop-shadow-md lg:flex-row lg:gap-2 lg:px-10 lg:py-9 xl:gap-6 xl:px-16'>
           <div className='mb-6 w-full lg:mb-0'>
             <div className='mb-2 flex items-center'>
               <BiCurrentLocation className='mr-3 h-6 w-6 text-sky-500' />
