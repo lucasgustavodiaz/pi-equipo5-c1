@@ -1,3 +1,1053 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[class*='floaty-icon-'] {
+  font-family: var(--font-floaty);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+}
+
+.floaty-icon-acreage:before {
+  content: '';
+}
+
+.floaty-icon-air-conditioning:before {
+  content: '';
+}
+
+.floaty-icon-anchor1:before {
+  content: '';
+}
+
+.floaty-icon-aqualodge:before {
+  content: '';
+}
+
+.floaty-icon-audio-system:before {
+  content: '';
+}
+
+.floaty-icon-autopilot:before {
+  content: '';
+}
+
+.floaty-icon-award:before {
+  content: '';
+}
+
+.floaty-icon-bank-note:before {
+  content: '';
+}
+
+.floaty-icon-bareboat:before {
+  content: '';
+}
+
+.floaty-icon-bath:before {
+  content: '';
+}
+
+.floaty-icon-bbq:before {
+  content: '';
+}
+
+.floaty-icon-beds:before {
+  content: '';
+}
+
+.floaty-icon-best-price:before {
+  content: '';
+}
+
+.floaty-icon-boattype:before {
+  content: '';
+}
+
+.floaty-icon-booking-1:before {
+  content: '';
+}
+
+.floaty-icon-booking:before {
+  content: '';
+}
+
+.floaty-icon-breakfast:before {
+  content: '';
+}
+
+.floaty-icon-cabin-cruise:before {
+  content: '';
+}
+
+.floaty-icon-calendar-minus:before {
+  content: '';
+}
+
+.floaty-icon-calendar:before {
+  content: '';
+}
+
+.floaty-icon-calendar_3:before {
+  content: '';
+}
+
+.floaty-icon-captain:before {
+  content: '';
+}
+
+.floaty-icon-card-check-o:before {
+  content: '';
+}
+
+.floaty-icon-catamarans:before {
+  content: '';
+}
+
+.floaty-icon-check-1:before {
+  content: '';
+}
+
+.floaty-icon-check-2:before {
+  content: '';
+}
+
+.floaty-icon-clock-o:before {
+  content: '';
+}
+
+.floaty-icon-coffee-machine:before {
+  content: '';
+}
+
+.floaty-icon-comments1:before {
+  content: '';
+}
+
+.floaty-icon-conditioning:before {
+  content: '';
+}
+
+.floaty-icon-cooker:before {
+  content: '';
+}
+
+.floaty-icon-dedicated:before {
+  content: '';
+}
+
+.floaty-icon-destination:before {
+  content: '';
+}
+
+.floaty-icon-diamond:before {
+  content: '';
+}
+
+.floaty-icon-dine:before {
+  content: '';
+}
+
+.floaty-icon-discount:before {
+  content: '';
+}
+
+.floaty-icon-easy-crewed:before {
+  content: '';
+}
+
+.floaty-icon-envelope-o:before {
+  content: '';
+}
+
+.floaty-icon-envelope-open:before {
+  content: '';
+}
+
+.floaty-icon-fitness:before {
+  content: '';
+}
+
+.floaty-icon-fridge:before {
+  content: '';
+}
+
+.floaty-icon-fully-crewed:before {
+  content: '';
+}
+
+.floaty-icon-galleries:before {
+  content: '';
+}
+
+.floaty-icon-generator:before {
+  content: '';
+}
+
+.floaty-icon-guestes:before {
+  content: '';
+}
+
+.floaty-icon-hair-dryer:before {
+  content: '';
+}
+
+.floaty-icon-heating:before {
+  content: '';
+}
+
+.floaty-icon-helm:before {
+  content: '';
+}
+
+.floaty-icon-hotel:before {
+  content: '';
+}
+
+.floaty-icon-image-plus-1:before {
+  content: '';
+}
+
+.floaty-icon-inside-speakers:before {
+  content: '';
+}
+
+.floaty-icon-jetski:before {
+  content: '';
+}
+
+.floaty-icon-kid:before {
+  content: '';
+}
+
+.floaty-icon-kitchen-utensils:before {
+  content: '';
+}
+
+.floaty-icon-laundry:before {
+  content: '';
+}
+
+.floaty-icon-life-buoy:before {
+  content: '';
+}
+
+.floaty-icon-location-o:before {
+  content: '';
+}
+
+.floaty-icon-location1:before {
+  content: '';
+}
+
+.floaty-icon-location2:before {
+  content: '';
+}
+
+.floaty-icon-lock:before {
+  content: '';
+}
+
+.floaty-icon-login-o:before {
+  content: '';
+}
+
+.floaty-icon-mark:before {
+  content: '';
+}
+
+.floaty-icon-meeting_events:before {
+  content: '';
+}
+
+.floaty-icon-menu:before {
+  content: '';
+}
+
+.floaty-icon-minus:before {
+  content: '';
+}
+
+.floaty-icon-money:before {
+  content: '';
+}
+
+.floaty-icon-motoboad:before {
+  content: '';
+}
+
+.floaty-icon-motorboats:before {
+  content: '';
+}
+
+.floaty-icon-outsite-shower:before {
+  content: '';
+}
+
+.floaty-icon-paper_plane:before {
+  content: '';
+}
+
+.floaty-icon-parking:before {
+  content: '';
+}
+
+.floaty-icon-phone-3:before {
+  content: '';
+}
+
+.floaty-icon-phone1:before {
+  content: '';
+}
+
+.floaty-icon-plane:before {
+  content: '';
+}
+
+.floaty-icon-play:before {
+  content: '';
+}
+
+.floaty-icon-professionals:before {
+  content: '';
+}
+
+.floaty-icon-quality:before {
+  content: '';
+}
+
+.floaty-icon-question:before {
+  content: '';
+}
+
+.floaty-icon-quote-2:before {
+  content: '';
+}
+
+.floaty-icon-quote-3:before {
+  content: '';
+}
+
+.floaty-icon-radar:before {
+  content: '';
+}
+
+.floaty-icon-safe:before {
+  content: '';
+}
+
+.floaty-icon-sailboad:before {
+  content: '';
+}
+
+.floaty-icon-sailboats:before {
+  content: '';
+}
+
+.floaty-icon-sailing-boat:before {
+  content: '';
+}
+
+.floaty-icon-saving-safe:before {
+  content: '';
+}
+
+.floaty-icon-search:before {
+  content: '';
+}
+
+.floaty-icon-share-o:before {
+  content: '';
+}
+
+.floaty-icon-share:before {
+  content: '';
+}
+
+.floaty-icon-shopping-1:before {
+  content: '';
+}
+
+.floaty-icon-spa:before {
+  content: '';
+}
+
+.floaty-icon-star-2:before {
+  content: '';
+}
+
+.floaty-icon-star-bold:before {
+  content: '';
+}
+
+.floaty-icon-stars-1:before {
+  content: '';
+}
+
+.floaty-icon-swiming_pool:before {
+  content: '';
+}
+
+.floaty-icon-tag-left:before {
+  content: '';
+}
+
+.floaty-icon-telephone:before {
+  content: '';
+}
+
+.floaty-icon-ticket:before {
+  content: '';
+}
+
+.floaty-icon-towels:before {
+  content: '';
+}
+
+.floaty-icon-train:before {
+  content: '';
+}
+
+.floaty-icon-trusted:before {
+  content: '';
+}
+
+.floaty-icon-tv:before {
+  content: '';
+}
+
+.floaty-icon-user-o:before {
+  content: '';
+}
+
+.floaty-icon-users-01:before {
+  content: '';
+}
+
+.floaty-icon-users-o:before {
+  content: '';
+}
+
+.floaty-icon-users1:before {
+  content: '';
+}
+
+.floaty-icon-wifi_large:before {
+  content: '';
+}
+
+.floaty-icon-yachts:before {
+  content: '';
+}
+
+.floaty-icon-angle-down:before {
+  content: '';
+}
+
+.floaty-icon-angle-left:before {
+  content: '';
+}
+
+.floaty-icon-angle-right:before {
+  content: '';
+}
+
+.floaty-icon-angle-up:before {
+  content: '';
+}
+
+.floaty-icon-arrow-left:before {
+  content: '';
+}
+
+.floaty-icon-arrow-right:before {
+  content: '';
+}
+
+.floaty-icon-arrows-h:before {
+  content: '';
+}
+
+.floaty-icon-bars:before {
+  content: '';
+}
+
+.floaty-icon-calendar-alt:before {
+  content: '';
+}
+
+.floaty-icon-camera-alt:before {
+  content: '';
+}
+
+.floaty-icon-caret-down:before {
+  content: '';
+}
+
+.floaty-icon-caret-left:before {
+  content: '';
+}
+
+.floaty-icon-caret-right:before {
+  content: '';
+}
+
+.floaty-icon-caret-up:before {
+  content: '';
+}
+
+.floaty-icon-cart-empty:before {
+  content: '';
+}
+
+.floaty-icon-check-circle:before {
+  content: '';
+}
+
+.floaty-icon-check-square:before {
+  content: '';
+}
+
+.floaty-icon-check:before {
+  content: '';
+}
+
+.floaty-icon-chevron-circle-left:before {
+  content: '';
+}
+
+.floaty-icon-chevron-circle-right:before {
+  content: '';
+}
+
+.floaty-icon-chevron-down:before {
+  content: '';
+}
+
+.floaty-icon-chevron-left:before {
+  content: '';
+}
+
+.floaty-icon-chevron-right:before {
+  content: '';
+}
+
+.floaty-icon-chevron-up:before {
+  content: '';
+}
+
+.floaty-icon-circle:before {
+  content: '';
+}
+
+.floaty-icon-clock:before {
+  content: '';
+}
+
+.floaty-icon-cloud-download-alt:before {
+  content: '';
+}
+
+.floaty-icon-comment:before {
+  content: '';
+}
+
+.floaty-icon-comments-alt:before {
+  content: '';
+}
+
+.floaty-icon-comments:before {
+  content: '';
+}
+
+.floaty-icon-contact:before {
+  content: '';
+}
+
+.floaty-icon-credit-card:before {
+  content: '';
+}
+
+.floaty-icon-dot-circle:before {
+  content: '';
+}
+
+.floaty-icon-edit:before {
+  content: '';
+}
+
+.floaty-icon-envelope:before {
+  content: '';
+}
+
+.floaty-icon-expand-alt:before {
+  content: '';
+}
+
+.floaty-icon-external-link-alt:before {
+  content: '';
+}
+
+.floaty-icon-eye:before {
+  content: '';
+}
+
+.floaty-icon-fan:before {
+  content: '';
+}
+
+.floaty-icon-file-alt:before {
+  content: '';
+}
+
+.floaty-icon-file-archive:before {
+  content: '';
+}
+
+.floaty-icon-filter:before {
+  content: '';
+}
+
+.floaty-icon-folder-open:before {
+  content: '';
+}
+
+.floaty-icon-folder:before {
+  content: '';
+}
+
+.floaty-icon-free_ship:before {
+  content: '';
+}
+
+.floaty-icon-frown:before {
+  content: '';
+}
+
+.floaty-icon-gift:before {
+  content: '';
+}
+
+.floaty-icon-grip-horizontal:before {
+  content: '';
+}
+
+.floaty-icon-heart-fill:before {
+  content: '';
+}
+
+.floaty-icon-heart:before {
+  content: '';
+}
+
+.floaty-icon-history:before {
+  content: '';
+}
+
+.floaty-icon-home:before {
+  content: '';
+}
+
+.floaty-icon-info-circle:before {
+  content: '';
+}
+
+.floaty-icon-instagram:before {
+  content: '';
+}
+
+.floaty-icon-level-up-alt:before {
+  content: '';
+}
+
+.floaty-icon-location-circle:before {
+  content: '';
+}
+
+.floaty-icon-long-arrow-alt-down:before {
+  content: '';
+}
+
+.floaty-icon-long-arrow-alt-left:before {
+  content: '';
+}
+
+.floaty-icon-long-arrow-alt-right:before {
+  content: '';
+}
+
+.floaty-icon-long-arrow-alt-up:before {
+  content: '';
+}
+
+.floaty-icon-map-marker-check:before {
+  content: '';
+}
+
+.floaty-icon-meh:before {
+  content: '';
+}
+
+.floaty-icon-minus-circle:before {
+  content: '';
+}
+
+.floaty-icon-mobile-android-alt:before {
+  content: '';
+}
+
+.floaty-icon-money-bill:before {
+  content: '';
+}
+
+.floaty-icon-pencil-alt:before {
+  content: '';
+}
+
+.floaty-icon-play-2:before {
+  content: '';
+}
+
+.floaty-icon-plus-circle:before {
+  content: '';
+}
+
+.floaty-icon-plus:before {
+  content: '';
+}
+
+.floaty-icon-quote:before {
+  content: '';
+}
+
+.floaty-icon-random:before {
+  content: '';
+}
+
+.floaty-icon-reply-all:before {
+  content: '';
+}
+
+.floaty-icon-reply:before {
+  content: '';
+}
+
+.floaty-icon-search-plus:before {
+  content: '';
+}
+
+.floaty-icon-shield-check:before {
+  content: '';
+}
+
+.floaty-icon-shopping-basket:before {
+  content: '';
+}
+
+.floaty-icon-shopping-cart:before {
+  content: '';
+}
+
+.floaty-icon-sign-in-alt:before {
+  content: '';
+}
+
+.floaty-icon-sign-out-alt:before {
+  content: '';
+}
+
+.floaty-icon-smile:before {
+  content: '';
+}
+
+.floaty-icon-spinner:before {
+  content: '';
+}
+
+.floaty-icon-square:before {
+  content: '';
+}
+
+.floaty-icon-star:before {
+  content: '';
+}
+
+.floaty-icon-sync:before {
+  content: '';
+}
+
+.floaty-icon-tachometer-alt:before {
+  content: '';
+}
+
+.floaty-icon-tags:before {
+  content: '';
+}
+
+.floaty-icon-th-large:before {
+  content: '';
+}
+
+.floaty-icon-th-list:before {
+  content: '';
+}
+
+.floaty-icon-thumbtack:before {
+  content: '';
+}
+
+.floaty-icon-times-circle:before {
+  content: '';
+}
+
+.floaty-icon-times:before {
+  content: '';
+}
+
+.floaty-icon-trophy-alt:before {
+  content: '';
+}
+
+.floaty-icon-truck:before {
+  content: '';
+}
+
+.floaty-icon-unlock:before {
+  content: '';
+}
+
+.floaty-icon-user-headset:before {
+  content: '';
+}
+
+.floaty-icon-user-shield:before {
+  content: '';
+}
+
+.floaty-icon-user:before {
+  content: '';
+}
+
+.floaty-icon-users:before {
+  content: '';
+}
+
+.floaty-icon-video:before {
+  content: '';
+}
+
+.floaty-icon-adobe:before {
+  content: '';
+}
+
+.floaty-icon-amazon:before {
+  content: '';
+}
+
+.floaty-icon-android:before {
+  content: '';
+}
+
+.floaty-icon-angular:before {
+  content: '';
+}
+
+.floaty-icon-apper:before {
+  content: '';
+}
+
+.floaty-icon-apple:before {
+  content: '';
+}
+
+.floaty-icon-atlassian:before {
+  content: '';
+}
+
+.floaty-icon-behance:before {
+  content: '';
+}
+
+.floaty-icon-bitbucket:before {
+  content: '';
+}
+
+.floaty-icon-bitcoin:before {
+  content: '';
+}
+
+.floaty-icon-bity:before {
+  content: '';
+}
+
+.floaty-icon-bluetooth:before {
+  content: '';
+}
+
+.floaty-icon-btc:before {
+  content: '';
+}
+
+.floaty-icon-centos:before {
+  content: '';
+}
+
+.floaty-icon-chrome:before {
+  content: '';
+}
+
+.floaty-icon-codepen:before {
+  content: '';
+}
+
+.floaty-icon-cpanel:before {
+  content: '';
+}
+
+.floaty-icon-discord:before {
+  content: '';
+}
+
+.floaty-icon-dochub:before {
+  content: '';
+}
+
+.floaty-icon-docker:before {
+  content: '';
+}
+
+.floaty-icon-dribbble:before {
+  content: '';
+}
+
+.floaty-icon-dropbox:before {
+  content: '';
+}
+
+.floaty-icon-drupal:before {
+  content: '';
+}
+
+.floaty-icon-ebay:before {
+  content: '';
+}
+
+.floaty-icon-facebook-f:before {
+  content: '';
+}
+
+.floaty-icon-facebook:before {
+  content: '';
+}
+
+.floaty-icon-figma:before {
+  content: '';
+}
+
+.floaty-icon-firefox:before {
+  content: '';
+}
+
+.floaty-icon-google-plus:before {
+  content: '';
+}
+
+.floaty-icon-google:before {
+  content: '';
+}
+
+.floaty-icon-grunt:before {
+  content: '';
+}
+
+.floaty-icon-gulp:before {
+  content: '';
+}
+
+.floaty-icon-html5:before {
+  content: '';
+}
+
+.floaty-icon-jenkins:before {
+  content: '';
+}
+
+.floaty-icon-joomla:before {
+  content: '';
+}
+
+.floaty-icon-link-brand:before {
+  content: '';
+}
+
+.floaty-icon-linkedin:before {
+  content: '';
+}
+
+.floaty-icon-mailchimp:before {
+  content: '';
+}
+
+.floaty-icon-opencart:before {
+  content: '';
+}
+
+.floaty-icon-paypal:before {
+  content: '';
+}
+
+.floaty-icon-pinterest-p:before {
+  content: '';
+}
+
+.floaty-icon-reddit:before {
+  content: '';
+}
+
+.floaty-icon-skype:before {
+  content: '';
+}
+
+.floaty-icon-slack:before {
+  content: '';
+}
+
+.floaty-icon-snapchat:before {
+  content: '';
+}
+
+.floaty-icon-spotify:before {
+  content: '';
+}
+
+.floaty-icon-trello:before {
+  content: '';
+}
+
+.floaty-icon-twitter:before {
+  content: '';
+}
+
+.floaty-icon-vimeo:before {
+  content: '';
+}
+
+.floaty-icon-whatsapp:before {
+  content: '';
+}
+
+.floaty-icon-wordpress:before {
+  content: '';
+}
+
+.floaty-icon-yoast:before {
+  content: '';
+}
+
+.floaty-icon-youtube:before {
+  content: '';
+}
