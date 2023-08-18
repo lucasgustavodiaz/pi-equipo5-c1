@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from 'react'
 
-export function Form() {
+export function Form(props) {
+  const {id} = props
+  const [data, setData] = useState([])
   const [name, setName] = useState('')
   const [sku, setSku] = useState('')
   const [description, setDescription] = useState('')
@@ -13,7 +15,29 @@ export function Form() {
   const [categoryId, setCategoryId] = useState('')
   const [categories, setCategories] = useState([]);
   const [available, setAvailable] = useState(true)
- 
+  
+  const urlGetYacht = `http://localhost:8081/api/update/${id}`
+    async function fetchData() {
+      try {
+        const response = await fetch(urlGetYacht)
+        if (!response.ok) {
+          throw new Error(
+            'Error al intentar cargar los datos del registros: . Response: ' +
+              response.status
+          )
+        }
+        const jsonData = await response.json()
+        setData(jsonData)
+      } catch (error) {
+        console.error('Error cargando los registros: ', error)
+      }
+    }
+
+  if(id != null){
+    fetchData()
+    setName(data.name)
+    setSku(data.sku)
+  }
 
   function handleChangeName(e) {
     setName(e.target.value)
@@ -44,7 +68,7 @@ export function Form() {
   }
 
   function handleChangeCategory(e) {
-    setCategory(e.target.value.trim())
+    setCategoryId(e.target.value.trim())
   }
 
   function handleChangeAvailable() {
@@ -61,18 +85,20 @@ export function Form() {
       pricePerDay: pricePerDay,
       pricePerWeek: pricePerWeek,
       pricePerHour: pricePerHour,
-      categoryId: category,
+      categoryId: categoryId,
       available: available
     }
     console.log(JSON.stringify(yacht))
-    const urlPost = 'http://localhost:8081/api/create'
+    const url = id == null ? `http://localhost:8081/api/create`:`http://localhost:8081/api/update/${id}`
+    const msg = id == null ? `Seguro que desea crear un registro para el yate: ${name} con el sku: ${sku}`:`Seguro que desea modificar el registro para el yate: ${name} con el sku: ${sku}` 
+    
     const opcion = confirm(
-      `Seguro que desea crear un registro para el yate: ${name} con el sku: ${sku}`
+      msg
     )
     if (opcion) {
       try {
-        const response = await fetch(urlPost, {
-          method: 'POST',
+        const response = await fetch(url, {
+          method: id==null ? 'POST' : 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -105,7 +131,7 @@ export function Form() {
     setPricePerDay('')
     setPricePerWeek('')
     setPricePerHour('')
-    setCategory(category)
+    setCategoryId(categoryId)
     setAvailable(true)
   }
 
@@ -265,7 +291,6 @@ export function Form() {
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             >
               <optgroup label='Categoria'>
-                <option value='1'>Velero</option>
                 {categories.map(category => (
                 <option key={category.id} value={category.id}>{category.name}</option>
               ))}
