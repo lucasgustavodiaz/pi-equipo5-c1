@@ -2,11 +2,13 @@
 import { useState, useEffect } from 'react'
 import { Row } from './row'
 import { Form } from './registrar/form'
+import { FormCat } from './registrar/formCategory'
 import { Modal } from './registrar/modal'
 
 export default function Page() {
   const [data, setData] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
+  const [modalCatOpen, setModalCatOpen] = useState(false)
 
   const urlGetYacht = 'http://localhost:8081/api/all'
   async function fetchData() {
@@ -37,6 +39,13 @@ export default function Page() {
     setModalOpen(false)
   }
 
+  const handleOpenModalCat = () => {
+    setModalCatOpen(true)
+  }
+
+  const handleCloseModalCat = () => {
+    setModalCatOpen(false)
+  }
   return (
     <div className='container '>
       <div className='flex min-h-screen items-center justify-center lg:hidden'>
@@ -54,6 +63,12 @@ export default function Page() {
       <div className='hidden min-h-screen lg:block'>
         <div className=' mt-5 flex items-center justify-between p-0'>
           <h1>Hola 👋, Administrador!</h1>
+          <button
+            className='rounded bg-blue-500 px-4 py-2 text-white'
+            onClick={handleOpenModalCat}
+          >
+            Agregar Categoría
+          </button>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
             onClick={handleOpenModal}
@@ -94,6 +109,9 @@ export default function Page() {
 
         <Modal isOpen={modalOpen} onClose={handleCloseModal}>
           <Form />
+        </Modal>
+        <Modal isOpen={modalCatOpen} onClose={handleCloseModalCat}>
+          <FormCat />
         </Modal>
       </div>
     </div>
