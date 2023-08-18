@@ -61,7 +61,7 @@ export default function Page() {
       </div>
 
       <div className='hidden min-h-screen lg:block'>
-        <div className=' mt-5 flex items-center justify-between p-0'>
+        <div className='mt-5 flex items-center justify-between p-0'>
           <h1>Hola 👋, Administrador!</h1>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
