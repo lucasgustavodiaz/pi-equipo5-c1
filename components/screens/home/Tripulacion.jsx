@@ -28,9 +28,9 @@ export default function Tripulacion() {
             img='/tripulacion/ezequiel-ochoa.png'
           />
           <CardEquipo
-            nombre='Alex Velazco'
+            nombre='Alex Velasquez '
             rol='Infraestructura'
-            img='/tripulacion/alex-velazco.png'
+            img='/tripulacion/alex-velasquez.png'
           />
           <CardEquipo
             nombre='Fernando Martinez'

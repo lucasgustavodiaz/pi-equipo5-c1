@@ -72,9 +72,6 @@ const SmallGallery = ({ imagesGallery }) => {
             className='h-full rounded-lg'
           />
         </div>
-        {/* <button className='absolute bottom-3 right-4 cursor-pointer rounded  px-4 py-2 font-bold text-white underline underline-offset-2 shadow-xl transition ease-in-out'>
-          Ver más
-        </button> */}
       </div>
     </div>
   )
