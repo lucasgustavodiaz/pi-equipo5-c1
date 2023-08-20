@@ -3,10 +3,10 @@ import './globals.css'
 import { Inter, Caveat } from 'next/font/google'
 import localFont from 'next/font/local'
 
-import ThemeProviderWrapper from '@/context/themeContext'
+import Providers from './providers'
 import Footer from '@/components/footer/Footer'
 import Header from '@/components/header/Header'
-import { AuthProvider } from '@/context/authContext'
+
 import ScrollToTopPage from '@/components/ScrollToTopPage'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -34,14 +34,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${caveat.variable} ${autography.variable} ${floaty.variable} font-sans`}
       >
-        <AuthProvider>
-          <ThemeProviderWrapper>
-            <ScrollToTopPage />
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </ThemeProviderWrapper>
-        </AuthProvider>
+        <Providers>
+          <ScrollToTopPage />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

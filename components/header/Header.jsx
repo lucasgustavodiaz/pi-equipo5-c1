@@ -35,6 +35,7 @@ export default function Header() {
                 className='dark:hidden'
                 width={101}
                 height={50}
+                priority={true}
               />
               <Image
                 src={logoDark}
@@ -42,6 +43,7 @@ export default function Header() {
                 className='hidden dark:block'
                 width={101}
                 height={50}
+                priority={true}
               />
             </Link>
           </li>

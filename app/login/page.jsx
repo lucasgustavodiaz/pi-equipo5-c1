@@ -123,7 +123,7 @@ export default function Login() {
             <FcGoogle className='mr-2 inline-block text-2xl' />
             Sign in with Google
           </button>
-          <p className='my-4 flex justify-between px-3 text-sm'>
+          <div className='my-4 flex justify-between px-3 text-sm'>
             Todavía no tenés una cuenta?
             <Link
               href='/register'
@@ -131,7 +131,7 @@ export default function Login() {
             >
               Registrate
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </div>

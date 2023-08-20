@@ -8,7 +8,7 @@ import Alert from '@/components/alert'
 import { FcGoogle } from 'react-icons/fc'
 
 export default function Register() {
-  const { signup } = useAuth()
+  const { signup, loginWithGoogle } = useAuth()
 
   const [user, setUser] = useState({
     email: '',
@@ -99,12 +99,12 @@ export default function Register() {
             <FcGoogle className='mr-2 inline-block text-2xl' />
             Sign in with Google
           </button>
-          <p className='my-4 flex justify-between px-3 text-sm'>
+          <div className='my-4 flex justify-between px-3 text-sm'>
             Ya tenés una cuenta?
             <Link href='/login' className='text-blue-700 hover:text-blue-900'>
               Ingresar
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </div>
