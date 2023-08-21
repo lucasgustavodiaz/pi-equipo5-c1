@@ -28,20 +28,11 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   const signup = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        // La cuenta se ha creado correctamente, ahora envía el correo de verificación.
-        const user = userCredential.user
-        return sendEmailVerification(user)
-      })
-      .then(() => {
-        // El correo de verificación se ha enviado correctamente.
-        console.log('Se ha enviado un correo de verificación')
-      })
-      .catch(error => {
-        // Maneja los errores de creación de cuenta o envío de correo.
-        console.error('Error al crear la cuenta:', error)
-      })
+    return createUserWithEmailAndPassword(auth, email, password)
+  }
+
+  const sendEmail = () => {
+    return sendEmailVerification(auth.currentUser)
   }
 
   const login = (email, password) => {
@@ -75,7 +66,8 @@ export function AuthProvider({ children }) {
         logout,
         loading,
         loginWithGoogle,
-        resetPassword
+        resetPassword,
+        sendEmail
       }}
     >
       {children}

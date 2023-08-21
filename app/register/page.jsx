@@ -8,7 +8,7 @@ import Alert from '@/components/alert'
 import { FcGoogle } from 'react-icons/fc'
 
 export default function Register() {
-  const { signup, loginWithGoogle } = useAuth()
+  const { signup, loginWithGoogle, sendEmail } = useAuth()
 
   const [user, setUser] = useState({
     email: '',
@@ -29,6 +29,7 @@ export default function Register() {
     setError('')
     try {
       await signup(user.email, user.password)
+      await sendEmail()
       router.push('/')
     } catch (error) {
       setError(errorMessages[error.code] || error.message)
