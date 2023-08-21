@@ -96,12 +96,12 @@ export default function Header() {
                     Inicio de sesión
                   </button>
                 </Link>
+                <Hamburguer />
               </>
             )
           )}
 
           {/* <ThemeButton /> */}
-          {/* <Hamburguer /> */}
         </div>
       </nav>
     </header>
