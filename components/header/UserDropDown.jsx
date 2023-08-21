@@ -21,7 +21,7 @@ export default function Dropdown({ openMenu }) {
 
   return (
     <div
-      className={`absolute right-0 top-12 flex w-[200px] flex-col rounded-xl bg-slate-50 p-2 text-sm drop-shadow-lg ${
+      className={`absolute right-0 top-12 flex w-[200px] flex-col rounded-xl border bg-white p-2 text-sm drop-shadow-lg ${
         openMenu ? 'block' : 'hidden'
       }`}
     >
