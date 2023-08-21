@@ -63,8 +63,10 @@ export default function Header() {
                   className='rounded-full border-2 border-sky-500'
                 />
               ) : (
-                <div className='flex h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-sky-500'>
-                  <p className='font-bold uppercase'>{user.email[0]}</p>
+                <div className='flex h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-sky-500 bg-gradient-to-r from-cyan-500 to-blue-500'>
+                  <p className='font-bold uppercase text-white'>
+                    {user.email[0]}
+                  </p>
                 </div>
               )}
               <button
