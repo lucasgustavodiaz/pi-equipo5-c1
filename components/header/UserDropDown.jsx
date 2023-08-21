@@ -6,8 +6,8 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { MdOutlineAdminPanelSettings } from 'react-icons/md'
 import { useRouter } from 'next/navigation'
 
-export default function Dropdown({ user, openMenu }) {
-  const { logout } = useAuth()
+export default function Dropdown({ openMenu }) {
+  const { user, logout } = useAuth()
   const router = useRouter()
 
   const handleLogout = async () => {
