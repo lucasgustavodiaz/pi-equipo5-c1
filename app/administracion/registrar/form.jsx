@@ -3,21 +3,40 @@
 import { useEffect, useState } from 'react'
 
 export function Form(props) {
-  const {formEditData} = props
+  const { formEditData } = props
   const [yacht, setYatcht] = useState(formEditData)
   const [name, setName] = useState(yacht == undefined ? '' : yacht.name)
   const [sku, setSku] = useState(yacht == undefined ? '' : yacht.sku)
-  const [description, setDescription] = useState(yacht == undefined ? '' : yacht.description)
+  const [description, setDescription] = useState(
+    yacht == undefined ? '' : yacht.description
+  )
   const [image, setImage] = useState(yacht == undefined ? '' : yacht.imageUrl)
-  const [pricePerDay, setPricePerDay] = useState(yacht == undefined ? '' : yacht.pricePerDay)
-  const [pricePerWeek, setPricePerWeek] = useState(yacht == undefined ? '' : yacht.pricePerWeek)
-  const [pricePerHour, setPricePerHour] = useState(yacht == undefined ? '' : yacht.pricePerHour)
-  const [categoryId, setCategoryId] = useState(yacht == undefined ? '' : yacht.category == null ? '' : yacht.category.id)
+  const [pricePerDay, setPricePerDay] = useState(
+    yacht == undefined ? '' : yacht.pricePerDay
+  )
+  const [pricePerWeek, setPricePerWeek] = useState(
+    yacht == undefined ? '' : yacht.pricePerWeek
+  )
+  const [pricePerHour, setPricePerHour] = useState(
+    yacht == undefined ? '' : yacht.pricePerHour
+  )
+  const [categoryId, setCategoryId] = useState(
+    yacht == undefined ? '' : yacht.category == null ? '' : yacht.category.id
+  )
+  const [featuresId, setFeaturesId] = useState(
+    yacht == undefined
+      ? []
+      : yacht.feature == null
+      ? []
+      : yacht.feature.map(feature => feature.id)
+  )
   const [categories, setCategories] = useState([])
-  const [available, setAvailable] = useState(yacht == undefined ? true : yacht.available)
+  const [features, setFeatures] = useState([])
+  const [available, setAvailable] = useState(
+    yacht == undefined ? true : yacht.available
+  )
 
-  
-
+  console.log(featuresId)
   function handleChangeName(e) {
     setName(e.target.value)
   }
@@ -50,6 +69,14 @@ export function Form(props) {
     setCategoryId(e.target.value.trim())
   }
 
+  function handleChangeFeature(e) {
+    const selectedValues = Array.from(
+      e.target.selectedOptions,
+      option => option.value
+    )
+    setFeaturesId(selectedValues)
+  }
+
   function handleChangeAvailable() {
     setAvailable(!available)
   }
@@ -65,16 +92,17 @@ export function Form(props) {
       pricePerWeek: pricePerWeek,
       pricePerHour: pricePerHour,
       categoryId: categoryId,
+      featuresId: featuresId,
       available: available
     }
     console.log(JSON.stringify(yachtForm))
     const url =
-    yacht == undefined
+      yacht == undefined
         ? `http://localhost:8081/api/create`
         : `http://localhost:8081/api/update/${yacht.id}`
-    
-        const msg =
-    yacht == undefined
+
+    const msg =
+      yacht == undefined
         ? `Seguro que desea crear un registro para el yate: ${name} con el sku: ${sku}`
         : `Seguro que desea modificar el registro para el yate: ${name} con el sku: ${sku}`
 
@@ -117,6 +145,7 @@ export function Form(props) {
     setPricePerWeek('')
     setPricePerHour('')
     setCategoryId(categoryId)
+    setFeaturesId(featuresId)
     setAvailable(true)
   }
 
@@ -137,8 +166,26 @@ export function Form(props) {
     }
   }
 
+  async function fetchFeatures() {
+    const urlGetFeatures = 'http://localhost:8081/api/feature/all'
+    try {
+      const response = await fetch(urlGetFeatures)
+      if (!response.ok) {
+        throw new Error(
+          'Error al intentar cargar todas las caracteristicas: . Response: ' +
+            response.status
+        )
+      }
+      const jsonData = await response.json()
+      setFeatures(jsonData)
+    } catch (error) {
+      console.error('Error cargando las caracteristicas: ', error)
+    }
+  }
+
   useEffect(() => {
     fetchCategories()
+    fetchFeatures()
   }, [])
 
   return (
@@ -195,7 +242,6 @@ export function Form(props) {
               onChange={handleChangeDescription}
               placeholder='Ingrese una breve descripcion del yate'
               id='description'
-              rows={1}
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             />
           </div>
@@ -276,13 +322,33 @@ export function Form(props) {
               id='category'
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             >
-              <optgroup label='Categoria'>
-                {categories.map(category => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </optgroup>
+              <option value="">Sin categorizar</option>
+              {categories.map(category => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className='col-span-6 sm:col-span-3'>
+            <label
+              htmlFor='feature'
+              className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
+            >
+              Caracteristicas
+            </label>
+            <select
+              multiple
+              onChange={handleChangeFeature}
+              value={featuresId}
+              id='feature'
+              className='block dropdown w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
+            >
+              {features.map(feature => (
+                <option key={feature.id} value={feature.id}>
+                  {feature.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className='col-span-6 sm:col-span-3'>

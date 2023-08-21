@@ -22,14 +22,14 @@ export function FormCat() {
   async function handleSubmit(e) {
     e.preventDefault()
     const category = {
-      title: title,
+      name: title,
       description: description,
-      imageUrl: image
+      image: image
     }
     console.log(JSON.stringify(category))
-    const urlPost = 'http://localhost:8081/api/???'
+    const urlPost = 'http://localhost:8081/api/category/create'
     const opcion = confirm(
-      `¿Seguro que desea crear la categoría ${title}`
+      `¿Seguro que desea crear la categoría: ${title}`
     )
     if (opcion) {
       try {
