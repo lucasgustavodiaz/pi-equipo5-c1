@@ -94,7 +94,7 @@ export default function Header() {
             )
           )}
 
-          <ThemeButton />
+          {/* <ThemeButton /> */}
           <Hamburguer />
         </div>
       </nav>
