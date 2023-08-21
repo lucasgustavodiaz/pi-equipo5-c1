@@ -36,7 +36,6 @@ export function Form(props) {
     yacht == undefined ? true : yacht.available
   )
 
-  console.log(featuresId)
   function handleChangeName(e) {
     setName(e.target.value)
   }
@@ -322,7 +321,7 @@ export function Form(props) {
               id='category'
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             >
-              <option value="">Sin categorizar</option>
+              <option value=''>Sin categorizar</option>
               {categories.map(category => (
                 <option key={category.id} value={category.id}>
                   {category.name}
@@ -342,7 +341,7 @@ export function Form(props) {
               onChange={handleChangeFeature}
               value={featuresId}
               id='feature'
-              className='block dropdown w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
+              className='dropdown block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             >
               {features.map(feature => (
                 <option key={feature.id} value={feature.id}>
