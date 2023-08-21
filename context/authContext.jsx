@@ -8,7 +8,8 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  sendEmailVerification
 } from 'firebase/auth'
 import { auth } from '@/firebase/firebase'
 
@@ -27,7 +28,20 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        // La cuenta se ha creado correctamente, ahora envía el correo de verificación.
+        const user = userCredential.user
+        return sendEmailVerification(user)
+      })
+      .then(() => {
+        // El correo de verificación se ha enviado correctamente.
+        console.log('Se ha enviado un correo de verificación')
+      })
+      .catch(error => {
+        // Maneja los errores de creación de cuenta o envío de correo.
+        console.error('Error al crear la cuenta:', error)
+      })
   }
 
   const login = (email, password) => {
