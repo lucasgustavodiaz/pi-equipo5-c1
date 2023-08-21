@@ -1,5 +1,5 @@
 import SectionTitle from '../SectionTitle'
-import { CardDetail } from '../cardDetail/CardDetail'
+import { CardDetail } from './cardDetail/CardDetail'
 
 async function getHeader() {
   const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
@@ -36,24 +36,18 @@ export default async function RandomProducts() {
           <div className='grid grid-cols-1 items-center justify-center gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-8'>
             {randomized &&
               randomized.map(
-                ({
-                  imageUrl,
-                  id,
-                  name,
-                  description,
-                  pricePerDay,
-                  category
-                }) => (
-                  <CardDetail
-                    key={id}
-                    imageUrl={imageUrl + '1.png'}
-                    id={id}
-                    name={name}
-                    description={description}
-                    pricePerDay={pricePerDay}
-                    category={category}
-                  />
-                )
+                ({ imageUrl, id, name, description, pricePerDay, category }) =>
+                  imageUrl !== null ? (
+                    <CardDetail
+                      key={id}
+                      imageUrl={imageUrl + '1.png'}
+                      id={id}
+                      name={name}
+                      description={description}
+                      pricePerDay={pricePerDay}
+                      category={category}
+                    />
+                  ) : null
               )}
           </div>
         </div>

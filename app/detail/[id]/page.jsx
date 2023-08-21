@@ -1,4 +1,4 @@
-import Galeria from '@/components/galeriaImagenes/Galeria'
+import Galeria from '@/components/suggested/galeriaImagenes/Galeria'
 import CurrencyFormatter from '@/components/util/CurrencyFormatter'
 import Link from 'next/link'
 import { HiLocationMarker } from 'react-icons/hi'
