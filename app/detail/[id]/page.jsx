@@ -162,7 +162,7 @@ export default async function Detalle({ params }) {
             </div>
           </div>
           {/* Reserva */}
-          <div className='w-full rounded-lg bg-white shadow-xl shadow-gray-100 lg:max-w-[438px]'>
+          <div className='w-full rounded-lg border border-gray-100 bg-white shadow-lg shadow-gray-200 lg:max-w-[438px]'>
             <div className='px-12 pb-10 pt-5 text-gray-500'>
               <div className='mb-8 flex items-center border-b pb-2'>
                 <span className='pr-2 text-xs font-semibold uppercase'>
