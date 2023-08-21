@@ -46,6 +46,15 @@ export default function Page() {
   const handleCloseModalCat = () => {
     setModalCatOpen(false)
   }
+
+  const handleOpenModalEdit = () => {
+    setModalEditOpen(true);
+  };
+
+  const handleCloseModalEdit = () => {
+    setModalEditOpen(false);
+  };
+  
   return (
     <div className='container '>
       <div className='flex min-h-screen items-center justify-center lg:hidden'>

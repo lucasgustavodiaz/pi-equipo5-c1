@@ -3,41 +3,20 @@
 import { useEffect, useState } from 'react'
 
 export function Form(props) {
-  const {id} = props
-  const [data, setData] = useState([])
-  const [name, setName] = useState('')
-  const [sku, setSku] = useState('')
-  const [description, setDescription] = useState('')
-  const [image, setImage] = useState('')
-  const [pricePerDay, setPricePerDay] = useState('')
-  const [pricePerWeek, setPricePerWeek] = useState('')
-  const [pricePerHour, setPricePerHour] = useState('')
-  const [categoryId, setCategoryId] = useState('')
-  const [categories, setCategories] = useState([]);
-  const [available, setAvailable] = useState(true)
-  
-  const urlGetYacht = `http://localhost:8081/api/update/${id}`
-    async function fetchData() {
-      try {
-        const response = await fetch(urlGetYacht)
-        if (!response.ok) {
-          throw new Error(
-            'Error al intentar cargar los datos del registros: . Response: ' +
-              response.status
-          )
-        }
-        const jsonData = await response.json()
-        setData(jsonData)
-      } catch (error) {
-        console.error('Error cargando los registros: ', error)
-      }
-    }
+  const {formEditData} = props
+  const [yacht, setYatcht] = useState(formEditData)
+  const [name, setName] = useState(yacht == undefined ? '' : yacht.name)
+  const [sku, setSku] = useState(yacht == undefined ? '' : yacht.sku)
+  const [description, setDescription] = useState(yacht == undefined ? '' : yacht.description)
+  const [image, setImage] = useState(yacht == undefined ? '' : yacht.imageUrl)
+  const [pricePerDay, setPricePerDay] = useState(yacht == undefined ? '' : yacht.pricePerDay)
+  const [pricePerWeek, setPricePerWeek] = useState(yacht == undefined ? '' : yacht.pricePerWeek)
+  const [pricePerHour, setPricePerHour] = useState(yacht == undefined ? '' : yacht.pricePerHour)
+  const [categoryId, setCategoryId] = useState(yacht == undefined ? '' : yacht.category == null ? '' : yacht.category.id)
+  const [categories, setCategories] = useState([])
+  const [available, setAvailable] = useState(yacht == undefined ? true : yacht.available)
 
-  if(id != null){
-    fetchData()
-    setName(data.name)
-    setSku(data.sku)
-  }
+  
 
   function handleChangeName(e) {
     setName(e.target.value)
@@ -77,7 +56,7 @@ export function Form(props) {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    const yacht = {
+    const yachtForm = {
       name: name,
       sku: sku,
       description: description,
@@ -88,21 +67,27 @@ export function Form(props) {
       categoryId: categoryId,
       available: available
     }
-    console.log(JSON.stringify(yacht))
-    const url = id == null ? `http://localhost:8081/api/create`:`http://localhost:8081/api/update/${id}`
-    const msg = id == null ? `Seguro que desea crear un registro para el yate: ${name} con el sku: ${sku}`:`Seguro que desea modificar el registro para el yate: ${name} con el sku: ${sku}` 
+    console.log(JSON.stringify(yachtForm))
+    const url =
+    yacht == undefined
+        ? `http://localhost:8081/api/create`
+        : `http://localhost:8081/api/update/${yacht.id}`
     
-    const opcion = confirm(
-      msg
-    )
+        const msg =
+    yacht == undefined
+        ? `Seguro que desea crear un registro para el yate: ${name} con el sku: ${sku}`
+        : `Seguro que desea modificar el registro para el yate: ${name} con el sku: ${sku}`
+
+    const opcion = confirm(msg)
+
     if (opcion) {
       try {
         const response = await fetch(url, {
-          method: id==null ? 'POST' : 'PUT',
+          method: yacht == undefined ? 'POST' : 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(yacht)
+          body: JSON.stringify(yachtForm)
         })
 
         if (!response.ok) {
@@ -136,7 +121,7 @@ export function Form(props) {
   }
 
   async function fetchCategories() {
-    const urlGetCategories = 'http://localhost:8081/api/category/all' 
+    const urlGetCategories = 'http://localhost:8081/api/category/all'
     try {
       const response = await fetch(urlGetCategories)
       if (!response.ok) {
@@ -287,13 +272,16 @@ export function Form(props) {
             </label>
             <select
               onChange={handleChangeCategory}
+              value={categoryId}
               id='category'
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             >
               <optgroup label='Categoria'>
                 {categories.map(category => (
-                <option key={category.id} value={category.id}>{category.name}</option>
-              ))}
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
               </optgroup>
             </select>
           </div>
