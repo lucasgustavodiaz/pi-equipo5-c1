@@ -48,10 +48,10 @@ export default function Page() {
             className='box-border flex items-center justify-center rounded-lg bg-red-300 p-4 text-lg text-red-800 dark:text-red-600'
             role='alert'
           >
-            <p>
+            <div>
               <span className='font-medium'>Alerta!</span> El panel de
               administrador no esta disponible en dispositivos móviles
-            </p>
+            </div>
           </div>
         </div>
 

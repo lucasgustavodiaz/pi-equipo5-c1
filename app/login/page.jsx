@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/authContext'
 import Link from 'next/link'
@@ -8,15 +8,22 @@ import Alert from '@/components/alert'
 import { FcGoogle } from 'react-icons/fc'
 
 export default function Login() {
-  const { login, loginWithGoogle, resetPassword } = useAuth()
+  const { login, loginWithGoogle, resetPassword, user } = useAuth()
 
-  const [user, setUser] = useState({
+  const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      router.push('/')
+    }
+  })
+
+  const [userForm, setUserForm] = useState({
     email: '',
     password: ''
   })
 
   const [error, setError] = useState('')
-  const router = useRouter()
 
   const errorMessages = {
     'auth/user-not-found': 'Usuario no encontrado',
@@ -29,7 +36,7 @@ export default function Login() {
     e.preventDefault()
     setError('')
     try {
-      await login(user.email, user.password)
+      await login(userForm.email, userForm.password)
       router.push('/')
     } catch (error) {
       setError(errorMessages[error.code] || error.message)
@@ -37,7 +44,7 @@ export default function Login() {
   }
 
   const handleChange = ({ target: { value, name } }) =>
-    setUser({ ...user, [name]: value })
+    setUserForm({ ...userForm, [name]: value })
 
   const handleGoogleSignin = async () => {
     try {
@@ -50,9 +57,9 @@ export default function Login() {
 
   const handleResetPassword = async e => {
     e.preventDefault()
-    if (!user.email) return setError('Write an email to reset password')
+    if (!userForm.email) return setError('Write an email to reset password')
     try {
-      await resetPassword(user.email)
+      await resetPassword(userForm.email)
       setError('We sent you an email. Check your inbox')
     } catch (error) {
       setError(error.message)

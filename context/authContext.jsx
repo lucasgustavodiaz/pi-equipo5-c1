@@ -9,7 +9,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
-  sendEmailVerification
+  sendEmailVerification,
+  updateProfile
 } from 'firebase/auth'
 import { auth } from '@/firebase/firebase'
 
@@ -27,8 +28,26 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const signup = (email, password) => {
+  const signup = (email, password, displayName) => {
     return createUserWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        // Una vez que el usuario se ha creado correctamente, actualiza el displayName
+        return updateProfile(userCredential.user, { displayName: displayName })
+          .then(() => {
+            // Devuelve el usuario actualizado con el displayName
+            return userCredential.user
+          })
+          .catch(error => {
+            // Maneja los errores al actualizar el displayName
+            console.error('Error al actualizar el displayName:', error)
+            throw error
+          })
+      })
+      .catch(error => {
+        // Maneja los errores al crear el usuario
+        console.error('Error al crear el usuario:', error)
+        throw error
+      })
   }
 
   const sendEmail = () => {
