@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useState } from 'react'
 import {
   BiCurrentLocation,
   BiAnchor,
@@ -7,6 +10,14 @@ import {
 } from 'react-icons/bi'
 
 export default function FormSearch() {
+  // Estado para almacenar la opción seleccionada
+  const [selectedOption, setSelectedOption] = useState('')
+
+  // Función para manejar el cambio de opción seleccionada
+  const handleSelectChange = event => {
+    setSelectedOption(event.target.value)
+  }
+
   return (
     <div className='container'>
       <div className='relative'>
@@ -60,19 +71,21 @@ export default function FormSearch() {
             <select
               name=''
               id=''
+              onChange={handleSelectChange} // Manejar el cambio de opción seleccionada
+              value={selectedOption} // Establecer el valor seleccionado en el estado
               className='w-full min-w-[210px] rounded-lg border-2 bg-white p-3 text-gray-400'
             >
               <option value='' hidden defaultValue>
                 Elija el tipo de barco
               </option>
-              <option value=''>Velero</option>
-              <option value=''>A motor</option>
-              <option value=''>Catamarán</option>
-              <option value=''>Yate</option>
-              <option value=''>Jet Sky</option>
+              <option value='/Velero'>Velero</option>
+              <option value='/A motor'>A motor</option>
+              <option value='/Catamaran'>Catamarán</option>
+              <option value='/Yate'>Yate</option>
+              <option value='/Jet Ski'>Jet Sky</option>
             </select>
           </div>
-          <Link href='/search'>
+          <Link href={`/search/${selectedOption}`}>
             <button className='trasition h-12 w-full rounded border border-sky-500 bg-sky-500 px-4 py-2 font-semibold text-white transition ease-in-out hover:bg-sky-900 lg:mt-8 lg:min-w-[125px] lg:max-w-[176px]'>
               Buscar <BiSearch className='ml-2 inline-block h-6 w-6' />
             </button>
