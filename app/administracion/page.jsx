@@ -248,7 +248,7 @@ function PageProduct() {
   return (
     <div className='container'>
       <div className='hidden min-h-screen lg:block'>
-        <div className='mt-5 p-0'>
+        <div className='pt-7'>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
             onClick={handleOpenModal}
@@ -331,9 +331,9 @@ function PageCategory() {
   }
 
   return (
-    <div className='bg-grey-300 w-full flex-auto px-12 pb-12 pt-2'>
+    <div className='container min-h-screen w-full'>
       <div className='hidden min-h-screen lg:block'>
-        <div className='flex items-center justify-between p-0'>
+        <div className='pt-7'>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
             onClick={handleOpenModalCat}
@@ -414,7 +414,7 @@ function PageFeature() {
   return (
     <div className='container min-h-screen w-full'>
       <div className='hidden lg:block'>
-        <div className='mt-5 flex items-center justify-between p-0'>
+        <div className='pt-7'>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
             onClick={handleOpenModalFeature}
@@ -422,7 +422,7 @@ function PageFeature() {
             Registrar Características
           </button>
         </div>
-        <div className='relative mx-auto mt-12 w-10/12 overflow-x-auto rounded-lg shadow-md'>
+        <div className='relative mx-auto mt-12 w-full overflow-x-auto rounded-lg shadow-md'>
           <table className='mx-auto w-full text-left text-sm text-gray-500 dark:text-gray-400'>
             <thead className='bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400'>
               <tr>
