@@ -95,10 +95,11 @@ export function Form(props) {
       available: available
     }
     console.log(JSON.stringify(yachtForm))
+    const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
     const url =
       yacht == undefined
-        ? `http://localhost:8081/api/create`
-        : `http://localhost:8081/api/update/${yacht.id}`
+        ? `${hostUrl}/api/create`
+        : `${hostUrl}/api/update/${yacht.id}`
 
     const msg =
       yacht == undefined
@@ -136,20 +137,33 @@ export function Form(props) {
 
   function handleReset(e) {
     e.preventDefault()
-    setName('')
-    setSku('')
-    setDescription('')
-    setImage('')
-    setPricePerDay('')
-    setPricePerWeek('')
-    setPricePerHour('')
-    setCategoryId(categoryId)
-    setFeaturesId(featuresId)
-    setAvailable(true)
+    setName(yacht == undefined ? '' : yacht.name)
+    setSku(yacht == undefined ? '' : yacht.sku)
+    setDescription(yacht == undefined ? '' : yacht.description)
+    setImage(yacht == undefined ? '' : yacht.imageUrl)
+    setPricePerDay(yacht == undefined ? '' : yacht.pricePerDay)
+    setPricePerWeek(yacht == undefined ? '' : yacht.pricePerWeek)
+    setPricePerHour(yacht == undefined ? '' : yacht.pricePerHour)
+    setCategoryId(
+      yacht == undefined
+        ? categoryId
+        : yacht.category == null
+        ? categoryId
+        : yacht.category.id
+    )
+    setFeaturesId(
+      yacht == undefined
+        ? []
+        : yacht.feature == null
+        ? []
+        : yacht.feature.map(feature => feature.id)
+    )
+    setAvailable(yacht == undefined ? true : yacht.available)
   }
 
   async function fetchCategories() {
-    const urlGetCategories = 'http://localhost:8081/api/category/all'
+    const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
+    const urlGetCategories = `${hostUrl}/api/category/all`
     try {
       const response = await fetch(urlGetCategories)
       if (!response.ok) {
@@ -166,7 +180,8 @@ export function Form(props) {
   }
 
   async function fetchFeatures() {
-    const urlGetFeatures = 'http://localhost:8081/api/feature/all'
+    const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
+    const urlGetFeatures = `${hostUrl}/api/feature/all`
     try {
       const response = await fetch(urlGetFeatures)
       if (!response.ok) {

@@ -2,12 +2,11 @@
 
 import { useState } from 'react'
 
-export function FormCat(props) {
+export function FormFeature(props) {
   const { formEditData } = props
-  const [category, setCategory] = useState(formEditData)
-  const [name, setName] = useState(category == undefined ? '' : category.name)
-  const [description, setDescription] = useState(category == undefined ? '' : category.description == null ? '' : category.description)
-  const [image, setImage] = useState(category == undefined ? '' : category.image == null ? '' : category.image)
+  const [feature, setFeature] = useState(formEditData)
+  const [name, setName] = useState(feature == undefined ? '' : feature.name)
+  const [image, setImage] = useState(feature == undefined ? '' : feature.image == null ? '' : feature.image)
 
   function handleChangeName(e) {
     setName(e.target.value)
@@ -25,32 +24,31 @@ export function FormCat(props) {
     e.preventDefault()
     const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
     const url =
-      category == undefined
-        ? `${hostUrl}/api/category/create`
-        : `${hostUrl}/api/category/update/${category.id}`
+      feature == undefined
+        ? `${hostUrl}/api/feature/create`
+        : `${hostUrl}/api/feature/update/${feature.id}`
 
     const msg =
-      category == undefined
-        ? `Seguro que desea crear un registro para la categoria: ${name}`
-        : `Seguro que desea modificar el registro para la categoria: ${name}`
+      feature == undefined
+        ? `Seguro que desea crear un registro para la caracteristica: ${name}`
+        : `Seguro que desea modificar el registro para la caracteristica: ${name}`
 
     const opcion = confirm(msg)
 
-    const categorySubmit = {
+    const featureSubmit = {
       name: name,
-      description: description,
       image: image
     }
-    console.log(JSON.stringify(categorySubmit))
+    console.log(JSON.stringify(featureSubmit))
 
     if (opcion) {
       try {
         const response = await fetch(url, {
-          method: category == undefined ? 'POST' : 'PUT',
+          method: feature == undefined ? 'POST' : 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(categorySubmit)
+          body: JSON.stringify(featureSubmit)
         })
 
         if (!response.ok) {
@@ -72,9 +70,8 @@ export function FormCat(props) {
 
   function handleReset(e) {
     e.preventDefault()
-    setName(category == undefined ? '' : category.name)
-    setDescription(category == undefined ? '' : category.description)
-    setImage(category == undefined ? '' : category.image)
+    setName(feature == undefined ? '' : feature.name)
+    setImage(feature == undefined ? '' : feature.image)
   }
 
   return (
@@ -89,13 +86,13 @@ export function FormCat(props) {
               htmlFor='name'
               className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
             >
-              Nombre de categoría
+              Nombre de caracteristica
             </label>
             <input
               type='text'
               value={name}
               onChange={handleChangeName}
-              placeholder='Ingrese nombre de la categoría'
+              placeholder='Ingrese nombre de la caracteristica'
               id='name'
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
               required
@@ -103,33 +100,16 @@ export function FormCat(props) {
           </div>
           <div className='col-span-6 sm:col-span-3'>
             <label
-              htmlFor='description'
-              className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
-            >
-              Descripcion de la categoría
-            </label>
-            <textarea
-              type='text'
-              value={description}
-              onChange={handleChangeDescription}
-              placeholder='Ingrese una descripcion de la categoría'
-              id='description'
-              rows={1}
-              className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
-            />
-          </div>
-          <div className='col-span-6 sm:col-span-3'>
-            <label
               htmlFor='image'
               className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
             >
-              Imagen de la categoría
+              Imagen de la caracteristica
             </label>
             <input
               type='text'
               value={image}
               onChange={handleChangeImage}
-              placeholder='Ingrese la imagen de la categoría'
+              placeholder='Ingrese la imagen de la caracteristica'
               id='image'
               className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
             />
