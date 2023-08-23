@@ -181,12 +181,12 @@ function PageCategory() {
     <div className='container'>
       <div className='hidden min-h-screen lg:block'>
         <div className='mt-5 flex items-center justify-between p-0'>
-          <h1>Hola 👋, Administrador! Bienvenido al panel de categorias</h1>
+          <h1>Hola 👋, Administrador! Bienvenido al panel de categorías</h1>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
             onClick={handleOpenModalCat}
           >
-            Registrar Categoria
+            Registrar Categoría 
           </button>
         </div>
         <div className='relative mx-auto mt-12 w-10/12 overflow-x-auto rounded-lg shadow-md'>
@@ -263,12 +263,12 @@ function PageFeature() {
     <div className='container'>
       <div className='hidden min-h-screen lg:block'>
         <div className='mt-5 flex items-center justify-between p-0'>
-          <h1>Hola 👋, Administrador! Bienvenido al panel de caracteristicas</h1>
+          <h1>Hola 👋, Administrador! Bienvenido al panel de características</h1>
           <button
             className='rounded bg-blue-500 px-4 py-2 text-white'
             onClick={handleOpenModalFeature}
           >
-            Registrar Caracteristica
+            Registrar Características
           </button>
         </div>
         <div className='relative mx-auto mt-12 w-10/12 overflow-x-auto rounded-lg shadow-md'>
