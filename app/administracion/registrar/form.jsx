@@ -204,7 +204,7 @@ export function Form(props) {
 
   return (
     <form
-      className='relative rounded-lg bg-white shadow dark:bg-gray-700'
+      className='relative rounded-lg shadow dark:bg-gray-700 opacity-100'
       onSubmit={handleSubmit}
     >
       <div className='space-y-6 p-6'>

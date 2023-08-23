@@ -112,7 +112,7 @@ export function Row(props) {
               <div>
                 {features.length === 0
                   ? 'Sin características'
-                  : `Características:${features.map(
+                  : `Características: ${features.map(
                       feature => ` ${feature.name}`
                     )}`}
               </div>

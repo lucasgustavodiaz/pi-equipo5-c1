@@ -44,21 +44,21 @@ export default function Menu() {
 
         {/* Mostrar en pantallas de 1024 en adelante*/}
         <div className='hidden lg:block'>
-          <div className='flex min-h-screen'>
+          <div className='flex min-h-screen z-5'>
             {/* Sidebar */}
             <div
               className='left-0 flex flex-col border-none bg-sky-900 pt-5 text-white dark:bg-[#121212]'
               style={{ minWidth: '200px' }}
             >
-              <div className='mb-4 flex h-14 items-center border-none px-5'>
+              <div className='flex h-14 items-center justify-center border-none px-5'>
                 <img
                   className='mr-4 h-10 w-10 overflow-hidden rounded-md'
-                  src='https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg'
+                  src='https://static.vecteezy.com/system/resources/previews/007/633/306/non_2x/ship-captain-icon-captain-sign-navy-officer-figure-illustration-vector.jpg'
                   alt='foto admin'
                 />
                 <span>Administrador</span>
               </div>
-              <ul className='flex flex-col space-y-1 py-4'>
+              <ul className='flex flex-col space-y-1 py-4 pt-11'>
                 <li className='px-5'>
                   <div className='h-8 text-sm font-light uppercase tracking-wide text-gray-400'>
                     Menu
@@ -113,15 +113,15 @@ export default function Menu() {
                   >
                     <span className='ml-3 inline-flex items-center justify-center'>
                       <svg
-                        width='25'
+                        width='24'
                         height='24'
-                        viewBox='0 0 25 24'
-                        fill='none'
+                        viewBox='0 0 32 32'
+                        fill='FFFFFF'
                         xmlns='http://www.w3.org/2000/svg'
                       >
                         <path
-                          d='M12.5 3C13.6935 3 14.8381 3.47411 15.682 4.31802C16.5259 5.16193 17 6.30653 17 7.5C17 8.69347 16.5259 9.83807 15.682 10.682C14.8381 11.5259 13.6935 12 12.5 12C11.3065 12 10.1619 11.5259 9.31802 10.682C8.47411 9.83807 8 8.69347 8 7.5C8 6.30653 8.47411 5.16193 9.31802 4.31802C10.1619 3.47411 11.3065 3 12.5 3ZM12.5 5.25C11.9033 5.25 11.331 5.48705 10.909 5.90901C10.4871 6.33097 10.25 6.90326 10.25 7.5C10.25 8.09674 10.4871 8.66903 10.909 9.09099C11.331 9.51295 11.9033 9.75 12.5 9.75C13.0967 9.75 13.669 9.51295 14.091 9.09099C14.5129 8.66903 14.75 8.09674 14.75 7.5C14.75 6.90326 14.5129 6.33097 14.091 5.90901C13.669 5.48705 13.0967 5.25 12.5 5.25ZM12.5 13.125C15.5038 13.125 21.5 14.6212 21.5 17.625V21H3.5V17.625C3.5 14.6212 9.49625 13.125 12.5 13.125ZM12.5 15.2625C9.15875 15.2625 5.6375 16.905 5.6375 17.625V18.8625H19.3625V17.625C19.3625 16.905 15.8412 15.2625 12.5 15.2625Z'
-                          fill='#ffffff'
+                          d='M13.71 25H27.71V27H13.71V25ZM6.88004 26L4.30004 28.58L5.71004 30L9.71004 26L5.71004 22L4.29004 23.41L6.88004 26ZM13.71 15H27.71V17H13.71V15ZM6.88004 16L4.30004 18.58L5.71004 20L9.71004 16L5.71004 12L4.29004 13.41L6.88004 16ZM13.71 5H27.71V7H13.71V5ZM6.88004 6L4.30004 8.58L5.71004 10L9.71004 6L5.71004 2L4.29004 3.41L6.88004 6Z'
+                          fill='#FFFFFF'
                         />
                       </svg>
                     </span>
@@ -146,15 +146,15 @@ export default function Menu() {
                   >
                     <span className='ml-3 inline-flex items-center justify-center'>
                       <svg
-                        width='25'
+                        width='24'
                         height='24'
-                        viewBox='0 0 25 24'
+                        viewBox='0 0 32 32'
                         fill='none'
                         xmlns='http://www.w3.org/2000/svg'
                       >
                         <path
-                          d='M12.5 3C13.6935 3 14.8381 3.47411 15.682 4.31802C16.5259 5.16193 17 6.30653 17 7.5C17 8.69347 16.5259 9.83807 15.682 10.682C14.8381 11.5259 13.6935 12 12.5 12C11.3065 12 10.1619 11.5259 9.31802 10.682C8.47411 9.83807 8 8.69347 8 7.5C8 6.30653 8.47411 5.16193 9.31802 4.31802C10.1619 3.47411 11.3065 3 12.5 3ZM12.5 5.25C11.9033 5.25 11.331 5.48705 10.909 5.90901C10.4871 6.33097 10.25 6.90326 10.25 7.5C10.25 8.09674 10.4871 8.66903 10.909 9.09099C11.331 9.51295 11.9033 9.75 12.5 9.75C13.0967 9.75 13.669 9.51295 14.091 9.09099C14.5129 8.66903 14.75 8.09674 14.75 7.5C14.75 6.90326 14.5129 6.33097 14.091 5.90901C13.669 5.48705 13.0967 5.25 12.5 5.25ZM12.5 13.125C15.5038 13.125 21.5 14.6212 21.5 17.625V21H3.5V17.625C3.5 14.6212 9.49625 13.125 12.5 13.125ZM12.5 15.2625C9.15875 15.2625 5.6375 16.905 5.6375 17.625V18.8625H19.3625V17.625C19.3625 16.905 15.8412 15.2625 12.5 15.2625Z'
-                          fill='#ffffff'
+                          d='M26.7377 13.996L25.2308 13.4929V7.69253C25.2308 7.2029 25.0363 6.73333 24.69 6.3871C24.3438 6.04088 23.8742 5.84638 23.3846 5.84638H16.9231V4.00023C16.9231 3.75541 16.8258 3.52062 16.6527 3.34751C16.4796 3.1744 16.2448 3.07715 16 3.07715C15.7552 3.07715 15.5204 3.1744 15.3473 3.34751C15.1742 3.52062 15.0769 3.75541 15.0769 4.00023V5.84638H8.61539C8.12576 5.84638 7.65618 6.04088 7.30996 6.3871C6.96374 6.73333 6.76923 7.2029 6.76923 7.69253V13.4929L5.26231 13.996C4.89452 14.1186 4.57466 14.3539 4.34809 14.6685C4.12152 14.9831 3.99973 15.361 4 15.7487V19.7041C3.99975 19.7896 4.0118 19.8747 4.03577 19.9568C5.84962 26.3133 13.9727 28.5021 15.5823 28.876C15.8572 28.939 16.1428 28.939 16.4177 28.876C18.0273 28.5021 26.1504 26.3133 27.9642 19.9568C27.9882 19.8747 28.0002 19.7896 28 19.7041V15.7487C28.0003 15.361 27.8785 14.9831 27.6519 14.6685C27.4253 14.3539 27.1055 14.1186 26.7377 13.996ZM8.61539 7.69253H23.3846V12.8768L16.2919 10.5091C16.1024 10.4459 15.8976 10.4459 15.7081 10.5091L8.61539 12.8768V7.69253ZM26.1538 19.5702C25.4869 21.7625 23.7827 23.6283 21.0827 25.1225C19.4806 25.9923 17.772 26.6493 16 27.0771C14.23 26.6489 12.5233 25.9918 10.9231 25.1225C8.21846 23.6283 6.51308 21.7614 5.84616 19.5702V15.7475L15.0769 12.6668V20.6156C15.0769 20.8604 15.1742 21.0952 15.3473 21.2683C15.5204 21.4414 15.7552 21.5387 16 21.5387C16.2448 21.5387 16.4796 21.4414 16.6527 21.2683C16.8258 21.0952 16.9231 20.8604 16.9231 20.6156V12.6668L26.1538 15.7487V19.5702Z'
+                          fill='#FFFFFF'
                         />
                       </svg>
                     </span>
@@ -250,7 +250,7 @@ function PageProduct() {
       <div className='hidden min-h-screen lg:block'>
         <div className='pt-7'>
           <button
-            className='rounded bg-blue-500 px-4 py-2 text-white'
+            className='rounded border border-sky-500 bg-transparent px-4 py-2 font-semibold text-sky-700 transition ease-in-out hover:border-transparent hover:bg-sky-500 hover:text-white dark:text-white sm:block'
             onClick={handleOpenModal}
           >
             Registrar Yate
@@ -335,7 +335,7 @@ function PageCategory() {
       <div className='hidden min-h-screen lg:block'>
         <div className='pt-7'>
           <button
-            className='rounded bg-blue-500 px-4 py-2 text-white'
+            className='rounded border border-sky-500 bg-transparent px-4 py-2 font-semibold text-sky-700 transition ease-in-out hover:border-transparent hover:bg-sky-500 hover:text-white dark:text-white sm:block'
             onClick={handleOpenModalCat}
           >
             Registrar Categoría
@@ -365,6 +365,7 @@ function PageCategory() {
                   key={category.id}
                   id={category.id}
                   name={category.name}
+                  icon={category.image}
                 />
               ))}
             </tbody>
@@ -416,7 +417,7 @@ function PageFeature() {
       <div className='hidden lg:block'>
         <div className='pt-7'>
           <button
-            className='rounded bg-blue-500 px-4 py-2 text-white'
+            className='rounded border border-sky-500 bg-transparent px-4 py-2 font-semibold text-sky-700 transition ease-in-out hover:border-transparent hover:bg-sky-500 hover:text-white dark:text-white sm:block'
             onClick={handleOpenModalFeature}
           >
             Registrar Características
@@ -446,6 +447,7 @@ function PageFeature() {
                   key={feature.id}
                   id={feature.id}
                   name={feature.name}
+                  icon={feature.image}
                 />
               ))}
             </tbody>

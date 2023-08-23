@@ -4,7 +4,7 @@ import { Modal } from './modal'
 import { FormCat } from './registrar/formCategory'
 
 export function RowCategory(props) {
-  const { id, name, urlImage } = props
+  const { id, name, icon } = props
   const [category, setCategory] = useState({})
   const [modalEditOpen, setModalEditOpen] = useState(false)
 
@@ -66,14 +66,11 @@ export function RowCategory(props) {
   return (
     <>
       <tr
-        className='border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600'
+        className='border-b bg-white hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600'
         onClick={handleOpenModalEdit}
       >
         <td className='px-6 py-4'>
-          <img
-            className='h-10 w-10 rounded-full'
-            alt='icono de la categoria'
-          />
+          <i className={`${icon} text-2xl text-sky-500`}></i>
         </td>
         <th
           scope='row'
@@ -95,7 +92,7 @@ export function RowCategory(props) {
         </td>
       </tr>
       <Modal isOpen={modalEditOpen} onClose={handleCloseModalEdit}>
-        <FormCat formEditData={category}/>
+        <FormCat formEditData={category} />
       </Modal>
     </>
   )
