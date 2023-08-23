@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {
   BiCurrentLocation,
   BiAnchor,
@@ -56,15 +57,26 @@ export default function FormSearch() {
                 Tipo de embarcación
               </h2>
             </div>
-            <input
-              type='text'
-              className='w-full min-w-[210px] rounded-lg border-2 bg-white p-3'
-              placeholder='Elija el tipo de barco'
-            />
+            <select
+              name=''
+              id=''
+              className='w-full min-w-[210px] rounded-lg border-2 bg-white p-3 text-gray-400'
+            >
+              <option value='' hidden defaultValue>
+                Elija el tipo de barco
+              </option>
+              <option value=''>Velero</option>
+              <option value=''>A motor</option>
+              <option value=''>Catamarán</option>
+              <option value=''>Yate</option>
+              <option value=''>Jet Sky</option>
+            </select>
           </div>
-          <button className='trasition h-12 w-full rounded border border-sky-500 bg-sky-500 px-4 py-2 font-semibold text-white transition ease-in-out hover:bg-sky-900 lg:mt-8 lg:min-w-[125px] lg:max-w-[176px]'>
-            Buscar <BiSearch className='ml-2 inline-block h-6 w-6' />
-          </button>
+          <Link href='/search'>
+            <button className='trasition h-12 w-full rounded border border-sky-500 bg-sky-500 px-4 py-2 font-semibold text-white transition ease-in-out hover:bg-sky-900 lg:mt-8 lg:min-w-[125px] lg:max-w-[176px]'>
+              Buscar <BiSearch className='ml-2 inline-block h-6 w-6' />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

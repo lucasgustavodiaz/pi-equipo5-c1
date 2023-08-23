@@ -1,3 +1,4 @@
+import CurrencyFormatter from '@/components/util/CurrencyFormatter'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsStarFill } from 'react-icons/bs'
@@ -31,7 +32,9 @@ export const CardDetail = ({
       <div className='transition duration-300 ease-in-out group-hover:bg-white'>
         <div className='flex flex-col px-5 py-6 text-xs sm:px-7'>
           <div className='flex justify-between'>
-            <h5 className='font-semibold text-sky-500'>{category}</h5>
+            <h5 className='font-semibold uppercase text-sky-500'>
+              {category?.name || 'Sin categoria'}
+            </h5>
             <div className='flex'>
               <BsStarFill className='mr-2 inline-block h-[14px] w-[14px] text-sky-500' />
               <span className='font-medium text-gray-500'>4.6/5</span>
@@ -51,7 +54,7 @@ export const CardDetail = ({
             <span className='text-[0.65rem] uppercase text-gray-500'>
               Por noche
             </span>{' '}
-            ${pricePerDay}
+            <CurrencyFormatter value={pricePerDay} />
           </h3>
           <button
             type='button'
