@@ -45,7 +45,7 @@ export default async function Detalle({ params }) {
             </Link>
             <span className='px-2'>{'>'}</span>
             <Link
-              href='/'
+              href='/search'
               className='transition ease-in-out hover:text-sky-500'
             >
               Barcos
