@@ -40,7 +40,7 @@ export const CardDetail = ({
               <span className='font-medium text-gray-500'>4.6/5</span>
             </div>
           </div>
-          <h4 className='my-1 truncate text-lg font-bold text-sky-900'>
+          <h4 className='my-1 truncate text-lg font-bold uppercase text-sky-900'>
             {name}
           </h4>
           <div className='h-[2.5em] text-gray-500'>

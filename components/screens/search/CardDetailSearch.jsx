@@ -44,7 +44,7 @@ export const CardDetailSearch = ({
               <span className='font-medium text-gray-500'>4.6/5</span>
             </div>
           </div>
-          <h3 className='truncate pb-[5px] text-xl font-bold text-sky-900'>
+          <h3 className='truncate pb-[5px] text-xl font-bold uppercase text-sky-900'>
             {name}
           </h3>
           <span className='text-sm font-medium text-gray-500 sm:pb-6'>
