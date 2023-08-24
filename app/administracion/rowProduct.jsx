@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useEffect } from 'react'
 import { Modal } from './modal'
 import { Form } from './registrar/form'

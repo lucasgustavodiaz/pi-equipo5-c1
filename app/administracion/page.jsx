@@ -15,19 +15,25 @@ import { useAuth } from '@/context/authContext'
 export default function Menu() {
   const { user } = useAuth()
 
-  const [productPageOpen, setProductPageOpen] = useState(
-    sessionStorage.getItem('product') === 'true' ||
+  const [productPageOpen, setProductPageOpen] = useState(null)
+  const [categoryPageOpen, setCategoryPageOpen] = useState(false)
+  const [featurePageOpen, setFeaturePageOpen] = useState(false)
+  const [userPageOpen, setUserPageOpen] = useState(false)
+
+  useEffect(() => {
+    // Use sessionStorage here
+    const productPageOpen =
+      sessionStorage.getItem('product') === 'true' ||
       sessionStorage.getItem('product') === null
-  )
-  const [categoryPageOpen, setCategoryPageOpen] = useState(
-    sessionStorage.getItem('category') === 'true'
-  )
-  const [featurePageOpen, setFeaturePageOpen] = useState(
-    sessionStorage.getItem('feature') === 'true'
-  )
-  const [userPageOpen, setUserPageOpen] = useState(
-    sessionStorage.getItem('user') === 'true'
-  )
+    const categoryPageOpen = sessionStorage.getItem('category') === 'true'
+    const featurePageOpen = sessionStorage.getItem('feature') === 'true'
+    const userPageOpen = sessionStorage.getItem('user') === 'true'
+
+    setProductPageOpen(productPageOpen)
+    setCategoryPageOpen(categoryPageOpen)
+    setFeaturePageOpen(featurePageOpen)
+    setUserPageOpen(userPageOpen)
+  }, [])
 
   return (
     <ProtectedRoute>
