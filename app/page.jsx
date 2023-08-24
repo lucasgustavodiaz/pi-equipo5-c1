@@ -23,9 +23,10 @@ export default function Home({ searchParams }) {
 
   const page = searchParams['page'] ?? '1'
   const per_page = searchParams['per_page'] ?? '9'
-  const start = (page - 1) * per_page // 0
-  const end = start + per_page // 9
-  const entries = totalYachts.slice(start, end) // [9]
+  const start = (page - 1) * per_page
+  const end = start + parseInt(per_page)
+  const totalPage = Math.ceil(totalYachts?.length / per_page)
+  const entries = totalYachts.slice(start, end)
 
   return (
     <section>
@@ -34,8 +35,9 @@ export default function Home({ searchParams }) {
       <Descubre />
       <RandomProducts entries={entries} />
       <PaginationControls
-        hasNextPage={end < totalYachts?.length ?? ''} // 9
+        hasNextPage={end < totalYachts?.length ?? ''}
         hasPrevPage={start > 0}
+        totalPage={totalPage}
       />
       <Embarcaciones />
       <Tripulacion />
