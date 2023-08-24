@@ -30,23 +30,23 @@ export default function Embarcaciones() {
           embarcaciones de alquiler para todo el país.
         </p>
         <div className='mt-20 grid grid-cols-1 gap-y-12 text-8xl text-white sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
-          <Link href='/' className='hover:text-sky-500'>
+          <Link href='/search/velero' className='hover:text-sky-500'>
             <i className='floaty-icon-sailboad'></i>
             <h3 className='pt-3 text-xl font-bold'>Velero</h3>
           </Link>
-          <Link href='/' className='hover:text-sky-500'>
+          <Link href='/search/a motor' className='hover:text-sky-500'>
             <i className='floaty-icon-motoboad'></i>
             <h3 className='pt-3 text-xl font-bold'>A motor</h3>
           </Link>
-          <Link href='/' className='hover:text-sky-500'>
+          <Link href='/search/catamaran' className='hover:text-sky-500'>
             <i className='floaty-icon-catamarans'></i>
             <h3 className='pt-3 text-xl font-bold'>Catamarán</h3>
           </Link>
-          <Link href='/' className='hover:text-sky-500'>
+          <Link href='/search/yate' className='hover:text-sky-500'>
             <i className='floaty-icon-yachts'></i>
             <h3 className='pt-3 text-xl font-bold'>Yate</h3>
           </Link>
-          <Link href='/' className='hover:text-sky-500'>
+          <Link href='/search/jet ski' className='hover:text-sky-500'>
             <i className='floaty-icon-jetski'></i>
             <h3 className='pt-3 text-xl font-bold'>Jet Ski</h3>
           </Link>
