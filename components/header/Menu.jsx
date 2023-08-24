@@ -7,7 +7,7 @@ import UserMenu from './UserMenu'
 export default function Menu() {
   const { user, loading } = useAuth()
 
-  console.log(user)
+  // console.log(user)
 
   return (
     <div className='relative flex items-center gap-4'>

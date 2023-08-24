@@ -1,4 +1,5 @@
-import { headers } from 'next/dist/client/components/headers'
+'use client'
+
 import { useState, useEffect } from 'react'
 import { Modal } from './modal'
 import { Form } from './registrar/form'
@@ -120,9 +121,9 @@ export function Row(props) {
           </>
         )}
       </tr>
-        <Modal isOpen={modalEditOpen} onClose={handleCloseModalEdit}>
-          <Form formEditData={yacht} />
-        </Modal>
+      <Modal isOpen={modalEditOpen} onClose={handleCloseModalEdit}>
+        <Form formEditData={yacht} />
+      </Modal>
     </>
   )
 }

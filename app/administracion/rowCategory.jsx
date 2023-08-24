@@ -1,4 +1,5 @@
-import { headers } from 'next/dist/client/components/headers'
+'use client'
+
 import { useState, useEffect } from 'react'
 import { Modal } from './modal'
 import { FormCat } from './registrar/formCategory'

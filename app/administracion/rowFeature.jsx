@@ -1,10 +1,11 @@
-import { headers } from 'next/dist/client/components/headers'
+'use client'
+
 import { useState, useEffect } from 'react'
 import { Modal } from './modal'
 import { FormFeature } from './registrar/formFeature'
 
 export function RowFeature(props) {
-  const { id, name, icon} = props
+  const { id, name, icon } = props
   const [feature, setFeature] = useState({})
   const [modalEditOpen, setModalEditOpen] = useState(false)
 
@@ -70,7 +71,7 @@ export function RowFeature(props) {
         onClick={handleOpenModalEdit}
       >
         <td className='px-3 py-4'>
-            <i className={`${icon} text-2xl text-sky-500`}></i>
+          <i className={`${icon} text-2xl text-sky-500`}></i>
         </td>
         <th
           scope='row'
@@ -92,7 +93,7 @@ export function RowFeature(props) {
         </td>
       </tr>
       <Modal isOpen={modalEditOpen} onClose={handleCloseModalEdit}>
-        <FormFeature formEditData={feature}/>
+        <FormFeature formEditData={feature} />
       </Modal>
     </>
   )
