@@ -13,6 +13,7 @@ import {
   updateProfile
 } from 'firebase/auth'
 import { auth } from '@/firebase/firebase'
+import { useRouter } from 'next/navigation'
 
 export const authContext = createContext()
 
@@ -27,6 +28,7 @@ export const useAuth = () => {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
 
   const signup = (email, password, displayName) => {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -63,7 +65,11 @@ export function AuthProvider({ children }) {
     return signInWithPopup(auth, googleProvider)
   }
 
-  const logout = () => signOut(auth)
+  const logout = () => {
+    return signOut(auth).then(() => {
+      router.push('/')
+    })
+  }
 
   const resetPassword = async email => sendPasswordResetEmail(auth, email)
 

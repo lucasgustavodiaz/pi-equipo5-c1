@@ -125,7 +125,7 @@ export default function Register() {
                 id='email'
                 onChange={handleChange}
                 className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
-                placeholder='your@email.com'
+                placeholder='ejemplo@email.com'
               />
             </div>
             <div className='mb-4'>
@@ -133,7 +133,7 @@ export default function Register() {
                 htmlFor='password'
                 className='mb-2 block text-sm font-bold text-gray-700'
               >
-                Password
+                Contraseña
               </label>
               <input
                 type='password'
@@ -145,7 +145,7 @@ export default function Register() {
               />
             </div>
             <button className='focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none'>
-              Register
+              Registrarse
             </button>
           </form>
           <button
@@ -153,7 +153,7 @@ export default function Register() {
             className='w-full rounded border border-gray-300 bg-slate-50 px-4 py-2 text-black shadow hover:bg-slate-200'
           >
             <FcGoogle className='mr-2 inline-block text-2xl' />
-            Sign in with Google
+            Iniciar sesión con Google
           </button>
           <div className='my-4 flex justify-between px-3 text-sm'>
             Ya tenés una cuenta?

@@ -88,7 +88,7 @@ export default function Login() {
                 id='email'
                 onChange={handleChange}
                 className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
-                placeholder='your@email.com'
+                placeholder='ejemplo@email.com'
               />
             </div>
             <div className='mb-4'>
@@ -96,7 +96,7 @@ export default function Login() {
                 htmlFor='password'
                 className='mb-2 block text-sm font-bold text-gray-700'
               >
-                Password
+                Contraseña
               </label>
               <input
                 type='password'
@@ -128,7 +128,7 @@ export default function Login() {
             className='w-full rounded border border-gray-300 bg-slate-50 px-4 py-2 text-black shadow hover:bg-slate-200'
           >
             <FcGoogle className='mr-2 inline-block text-2xl' />
-            Sign in with Google
+            Iniciar sesión con Google
           </button>
           <div className='my-4 flex justify-between px-3 text-sm'>
             Todavía no tenés una cuenta?
