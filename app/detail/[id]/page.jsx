@@ -11,7 +11,6 @@ const imageUrl = `${hostUrl}/api/urlImage/`
 async function getItem(id) {
   const response = await fetch(itemsUrl + id, {
     cache: 'no-store'
-    // next: { revalidate: 10 },
   })
   const data = await response.json()
   return data
@@ -20,7 +19,6 @@ async function getItem(id) {
 async function getGallery(id) {
   const response = await fetch(imageUrl + id, {
     cache: 'no-store'
-    // next: { revalidate: 10 },
   })
   const data = await response.json()
   return data
