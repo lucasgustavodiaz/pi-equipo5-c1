@@ -69,7 +69,7 @@ export default async function Detalle({ params }) {
         <div className='flex flex-col gap-8 pt-6 lg:flex-row'>
           {/* Detalles */}
           <div className='1 w-full pt-2'>
-            <h1 className='pb-5 text-4xl font-bold text-blue-950'>
+            <h1 className='pb-5 text-4xl font-bold uppercase text-blue-950'>
               {results.name}
             </h1>
             <div className='flex items-center text-gray-400'>
