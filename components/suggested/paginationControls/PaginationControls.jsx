@@ -14,8 +14,8 @@ const PaginationControls = ({ hasNextPage, hasPrevPage, totalPage }) => {
     <div className='bg-[#f2f5fa]'>
       <div className=' container mx-auto flex content-baseline items-baseline justify-center gap-6 rounded-lg p-8 drop-shadow-md lg:flex-row lg:gap-2 lg:py-10 xl:gap-6'>
         <button
-          className={`rounded-full border-sky-500 bg-sky-500 p-3 font-semibold text-white transition ease-in-out ${
-            !hasPrevPage && 'cursor-not-allowed bg-gray-400'
+          className={`rounded-full border-sky-500 p-3 font-semibold text-white transition ease-in-out ${
+            !hasPrevPage ? 'cursor-not-allowed bg-gray-400' : 'bg-sky-500'
           }`}
           disabled={!hasPrevPage}
           onClick={() => {
@@ -30,8 +30,8 @@ const PaginationControls = ({ hasNextPage, hasPrevPage, totalPage }) => {
           {page} / {totalPage}
         </div>
         <button
-          className={`rounded-full border-sky-500 bg-sky-500 p-3 font-semibold text-white transition ease-in-out ${
-            !hasNextPage && 'cursor-not-allowed bg-gray-400'
+          className={`rounded-full border-sky-500 p-3 font-semibold text-white transition ease-in-out ${
+            !hasNextPage ? 'cursor-not-allowed bg-gray-400' : 'bg-sky-500'
           }`}
           disabled={!hasNextPage}
           onClick={() => {
