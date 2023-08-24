@@ -13,8 +13,7 @@ const SmallGallery = ({ imagesGallery }) => {
             loading='eager'
             blurDataURL='data:...'
             placeholder='blur'
-            width={730}
-            height={530}
+            fill
             style={{ objectFit: 'cover' }}
             quality={100}
             className='h-full rounded-lg'
@@ -27,8 +26,7 @@ const SmallGallery = ({ imagesGallery }) => {
             loading='eager'
             blurDataURL='data:...'
             placeholder='blur'
-            width={730}
-            height={530}
+            fill
             style={{ objectFit: 'cover' }}
             className='h-full rounded-lg'
           />
@@ -40,8 +38,7 @@ const SmallGallery = ({ imagesGallery }) => {
             loading='eager'
             blurDataURL='data:...'
             placeholder='blur'
-            width={730}
-            height={530}
+            fill
             style={{ objectFit: 'cover' }}
             className='h-full rounded-lg'
           />
@@ -53,8 +50,7 @@ const SmallGallery = ({ imagesGallery }) => {
             loading='eager'
             blurDataURL='data:...'
             placeholder='blur'
-            width={730}
-            height={530}
+            fill
             style={{ objectFit: 'cover' }}
             className='h-full rounded-lg'
           />
@@ -66,8 +62,7 @@ const SmallGallery = ({ imagesGallery }) => {
             loading='eager'
             blurDataURL='data:...'
             placeholder='blur'
-            width={730}
-            height={530}
+            fill
             style={{ objectFit: 'cover' }}
             className='h-full rounded-lg'
           />
