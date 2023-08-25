@@ -12,7 +12,7 @@ const Galeria = ({ imagesGallery }) => {
   }
 
   return (
-    <div className='relative'>
+    <>
       <SmallGallery imagesGallery={imagesGallery} />
       {!button && <FullGalery imagesGallery={imagesGallery} />}
 
@@ -31,7 +31,7 @@ const Galeria = ({ imagesGallery }) => {
           </>
         )}
       </button>
-    </div>
+    </>
   )
 }
 

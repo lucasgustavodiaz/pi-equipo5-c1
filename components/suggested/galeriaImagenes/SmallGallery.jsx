@@ -4,9 +4,9 @@ import Image from 'next/image'
 
 const SmallGallery = ({ imagesGallery }) => {
   return (
-    <div>
+    <>
       <div className='relative grid h-full w-full grid-cols-2 gap-3 pt-4 md:grid-cols-4'>
-        <div className='relative col-span-2 row-span-2'>
+        <div className='relative col-span-2 row-span-2 aspect-[4/2.8]'>
           <Image
             src={imagesGallery[0].url}
             alt='gallery'
@@ -68,7 +68,7 @@ const SmallGallery = ({ imagesGallery }) => {
           />
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
