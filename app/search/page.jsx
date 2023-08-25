@@ -50,7 +50,7 @@ export default async function Search() {
                   </select>
                 </div>
               </div>
-              <div className='flex flex-col gap-10 pt-10'>
+              <div className='grid grid-cols-1 justify-items-center gap-x-6 gap-y-10 pt-10 sm:grid-cols-2 lg:grid-cols-1'>
                 {results &&
                   results.map(
                     ({
@@ -76,7 +76,7 @@ export default async function Search() {
               </div>
             </div>
             {/* Filtros */}
-            <div className='w-full lg:max-w-[300px] xl:max-w-[438px]'>
+            <div className='w-full lg:max-w-[292.14px] xl:max-w-[426.89px] 2xl:max-w-[438px]'>
               <Filters />
             </div>
           </div>

@@ -15,10 +15,10 @@ export const CardDetailSearch = ({
   return (
     <>
       <Link
-        className='group relative flex flex-col overflow-hidden rounded-lg border shadow-sm transition-transform duration-300 ease-in-out hover:scale-[1.01] lg:flex-row'
+        className='group relative flex w-full max-w-[450px] flex-col overflow-hidden rounded-lg border shadow-sm transition-transform duration-300 ease-in-out hover:scale-[1.01] lg:max-w-full lg:flex-row'
         href={`/detail/${id}`}
       >
-        <div className='h-53 relative h-[250px] overflow-hidden lg:h-[215px] lg:min-w-[250px] xl:h-[239px] xl:min-w-[371px]'>
+        <div className='h-53 relative h-[208px] overflow-hidden lg:h-[215px] lg:min-w-[250px] xl:h-[239px] xl:min-w-[341px] 2xl:min-w-[371px]'>
           <Image
             src={imageUrl}
             alt='Picture of the author'
@@ -31,7 +31,7 @@ export const CardDetailSearch = ({
             className='transition duration-150 ease-in-out group-hover:brightness-105'
           />
         </div>
-        <div className='flex w-full flex-col justify-center px-[15px] py-[30px] transition duration-300 ease-in-out group-hover:bg-white sm:px-[30px] lg:px-[30px] lg:py-0'>
+        <div className='flex w-full flex-col justify-center px-[15px] pt-6 transition duration-300 ease-in-out group-hover:bg-white sm:px-[30px] lg:px-[30px] lg:py-0'>
           <div className='flex justify-between pb-[5px]'>
             <div className='flex items-center'>
               <HiLocationMarker className='mr-1 h-4 w-4 text-gray-400' />
@@ -47,11 +47,11 @@ export const CardDetailSearch = ({
           <h3 className='truncate pb-[5px] text-xl font-bold uppercase text-sky-900'>
             {name}
           </h3>
-          <span className='text-sm font-medium text-gray-500 sm:pb-6'>
+          <span className='text-sm font-medium text-gray-500 lg:pb-6'>
             8 Guests 9 Beds 2 Baths 5 Cabins
           </span>
-          <div className='flex flex-col items-start justify-between sm:flex-row sm:items-center lg:pt-2 xl:pt-4'>
-            <h3 className='mr-2 py-4 text-xl font-extrabold leading-none text-sky-500'>
+          <div className='flex flex-wrap items-center justify-between py-4 lg:pb-0 lg:pt-2 xl:pt-4'>
+            <h3 className='mr-2 py-4 text-xl font-extrabold leading-none text-sky-500 sm:pt-0 md:pt-4'>
               <span className='text-[0.75rem] font-semibold uppercase text-gray-500'>
                 Por noche
               </span>{' '}
