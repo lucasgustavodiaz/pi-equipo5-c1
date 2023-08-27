@@ -23,12 +23,10 @@ export const CardDetailSearch = ({
             src={imageUrl}
             alt='Picture of the author'
             loading='eager'
-            blurDataURL='data:...'
-            placeholder='blur'
             fill
             sizes='(max-width: 768px) 100vw'
             style={{ objectFit: 'cover' }}
-            className='transition duration-150 ease-in-out group-hover:brightness-105'
+            className='bg-gray-300 transition duration-150 ease-in-out group-hover:brightness-105'
           />
         </div>
         <div className='flex w-full flex-col justify-center px-[15px] pt-6 transition duration-300 ease-in-out group-hover:bg-white sm:px-[30px] lg:px-[30px] lg:py-0'>

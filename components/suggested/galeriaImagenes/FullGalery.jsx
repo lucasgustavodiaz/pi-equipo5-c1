@@ -11,11 +11,9 @@ const FullGalery = ({ imagesGallery }) => {
             src={imagesGallery[5].url}
             alt='gallery'
             loading='eager'
-            blurDataURL='data:...'
-            placeholder='blur'
             fill
             style={{ objectFit: 'cover' }}
-            className='h-full rounded-lg'
+            className='h-full rounded-lg bg-gray-300'
           />
         </div>
         <div className='relative aspect-[4/2.8]'>
@@ -23,11 +21,9 @@ const FullGalery = ({ imagesGallery }) => {
             src={imagesGallery[6].url}
             alt='gallery'
             loading='eager'
-            blurDataURL='data:...'
-            placeholder='blur'
             fill
             style={{ objectFit: 'cover' }}
-            className='h-full rounded-lg'
+            className='h-full rounded-lg bg-gray-300'
           />
         </div>
         <div className='relative aspect-[4/2.8]'>
@@ -35,11 +31,9 @@ const FullGalery = ({ imagesGallery }) => {
             src={imagesGallery[7].url}
             alt='gallery'
             loading='eager'
-            blurDataURL='data:...'
-            placeholder='blur'
             fill
             style={{ objectFit: 'cover' }}
-            className='h-full rounded-lg'
+            className='h-full rounded-lg bg-gray-300'
           />
         </div>
         <div className='relative aspect-[4/2.8]'>
@@ -47,11 +41,9 @@ const FullGalery = ({ imagesGallery }) => {
             src={imagesGallery[8].url}
             alt='gallery'
             loading='eager'
-            blurDataURL='data:...'
-            placeholder='blur'
             fill
             style={{ objectFit: 'cover' }}
-            className='h-full rounded-lg'
+            className='h-full rounded-lg bg-gray-300'
           />
         </div>
       </div>

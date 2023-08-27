@@ -21,12 +21,10 @@ export const CardDetail = ({
           src={imageUrl}
           alt='Picture of the author'
           loading='eager'
-          blurDataURL='data:...'
-          placeholder='blur'
           fill
           sizes='(max-width: 768px) 100vw'
           style={{ objectFit: 'cover' }}
-          className='rounded-t-lg transition duration-150 ease-in-out group-hover:brightness-105'
+          className='rounded-t-lg bg-gray-300 transition duration-150 ease-in-out group-hover:brightness-105'
         />
       </div>
       <div className='transition duration-300 ease-in-out group-hover:bg-white'>
