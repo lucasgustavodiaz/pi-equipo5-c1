@@ -6,7 +6,7 @@ export const ButtonBack = () => {
   return (
     <button
       onClick={() => router.back()}
-      className='font-semibold transition ease-in-out hover:text-sky-500'
+      className='text-xs font-semibold uppercase transition ease-in-out hover:text-sky-500'
     >
       volver
     </button>
