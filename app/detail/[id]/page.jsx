@@ -3,6 +3,7 @@ import CurrencyFormatter from '@/components/util/CurrencyFormatter'
 import Link from 'next/link'
 import { HiLocationMarker } from 'react-icons/hi'
 import { BsStarFill } from 'react-icons/bs'
+import { ButtonBack } from '@/components/suggested/buttonBack/ButtonBack'
 
 const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
 const itemsUrl = `${hostUrl}/api/`
@@ -51,12 +52,7 @@ export default async function Detalle({ params }) {
             <span className='px-2'>{'>'}</span>
             {results.name}
           </div>
-          <Link
-            href='/'
-            className='font-semibold transition ease-in-out hover:text-sky-500'
-          >
-            volver
-          </Link>
+          <ButtonBack />
         </div>
       </div>
       <div
