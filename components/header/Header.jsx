@@ -8,8 +8,8 @@ import Menu from './Menu'
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-50 bg-white py-3 dark:bg-[#121212]'>
-      <nav className='container flex items-center justify-between'>
+    <header className='sticky top-0 z-50 bg-white bg-opacity-50 py-3 backdrop-blur-lg backdrop-filter dark:bg-[#121212]'>
+      <nav className='container flex items-center justify-between '>
         <ul className='flex gap-6'>
           <li>
             <Link href='/'>
