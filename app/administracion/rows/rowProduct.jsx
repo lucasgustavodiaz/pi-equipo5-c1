@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Modal } from './modal'
-import { Form } from './registrar/form'
+import { Modal } from '../util/modal'
+import { Form } from '../register-edit/formProduct'
+import Image from 'next/image'
 
 export function Row(props) {
   const { id, name, urlImage, category, features } = props
@@ -29,7 +30,9 @@ export function Row(props) {
     }
   }
 
-  async function handleOnDelete() {
+  async function handleOnDelete(e) {
+    e.preventDefault()
+    e.stopPropagation()
     const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
     const urlDelete = `${hostUrl}/api/delete/${id}`
     const opcion = confirm(`Desea eliminar el registro con el id: ${id}`)
@@ -71,12 +74,16 @@ export function Row(props) {
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleOpenModalEdit}
       >
-        <td className='px-6 py-4'>
-          <img
-            className='h-10 w-10 rounded-full'
-            src={`${urlImage}1.png`}
-            alt='imagen de la embarcacion'
-          />
+        <td className='px-8 py-4'>
+          <div>
+            <Image
+              className='h-11 w-11 rounded-full border-2 border-sky-500'
+              width='50'
+              height='50'
+              src={`${urlImage}1.png`}
+              alt='imagen de la embarcacion'
+            />
+          </div>
         </td>
         <th
           scope='row'
@@ -92,7 +99,22 @@ export function Row(props) {
               onClick={handleOnDelete}
               className='font-medium text-blue-600 hover:underline dark:text-blue-500'
             >
-              Eliminar
+              <svg
+                className='h-6 w-6 text-red-500'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                strokeWidth='2'
+                stroke='currentColor'
+                fill='none'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                {' '}
+                <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                <line x1='18' y1='6' x2='6' y2='18' />{' '}
+                <line x1='6' y1='6' x2='18' y2='18' />
+              </svg>
             </button>
           </div>
         </td>

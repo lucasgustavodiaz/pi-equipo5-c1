@@ -1,23 +1,83 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Select from 'react-select'
 
 export function FormFeature(props) {
   const { formEditData } = props
   const [feature, setFeature] = useState(formEditData)
+  const [data, setData] = useState([])
   const [name, setName] = useState(feature == undefined ? '' : feature.name)
-  const [image, setImage] = useState(feature == undefined ? '' : feature.image == null ? '' : feature.image)
+  const [image, setImage] = useState(
+    feature == undefined ? null : feature.image == null ? null : feature.image
+  )
+  const [selectedOption, setSelectedOption] = useState(
+    feature == undefined
+      ? null
+      : feature.image == null
+      ? null
+      : {
+          value: feature.image,
+          label: feature.name,
+          icon: feature.image
+        }
+  )
+  const [defaultOption, setDefaultOption] = useState(
+    feature == undefined
+      ? null
+      : feature.image == null
+      ? null
+      : {
+          value: feature.image,
+          label: feature.name,
+          icon: feature.image
+        }
+  )      
+  
+  const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
+  const urlGetFeature = `${hostUrl}/api/feature/all`
+  async function fetchData() {
+    try {
+      const response = await fetch(urlGetFeature)
+      if (!response.ok) {
+        throw new Error(
+          'Error al intentar cargar todos los registros: . Response: ' +
+            response.status
+        )
+      }
+      const jsonData = await response.json()
+      setData(jsonData)
+    } catch (error) {
+      console.error('Error cargando los registros: ', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const options = data.map(feature => ({
+    value: feature.image,
+    label: feature.name,
+    icon: feature.image
+  }))
+
+  const customStyles = {
+    control: provided => ({
+      ...provided,
+      padding: 2,
+      margin: 0,
+      borderRadius: 8,
+    })
+  }
 
   function handleChangeName(e) {
-    setName(e.target.value)
+    setName(e.target.value.trim())
   }
 
-  function handleChangeDescription(e) {
-    setDescription(e.target.value)
-  }
-
-  function handleChangeImage(e) {
-    setImage(e.target.value)
+  function handleChangeImage(selectedOption) {
+    setSelectedOption(selectedOption)
+    setImage(selectedOption != null ? selectedOption.value : null)
   }
 
   async function handleSubmit(e) {
@@ -39,7 +99,6 @@ export function FormFeature(props) {
       name: name,
       image: image
     }
-    console.log(JSON.stringify(featureSubmit))
 
     if (opcion) {
       try {
@@ -59,7 +118,6 @@ export function FormFeature(props) {
         } else {
           window.location.reload()
         }
-
         const data = await response.json()
         console.log('Respuesta del servidor:', data)
       } catch (error) {
@@ -71,7 +129,7 @@ export function FormFeature(props) {
   function handleReset(e) {
     e.preventDefault()
     setName(feature == undefined ? '' : feature.name)
-    setImage(feature == undefined ? '' : feature.image)
+    setSelectedOption(feature == undefined ? '' : defaultOption)
   }
 
   return (
@@ -103,16 +161,36 @@ export function FormFeature(props) {
               htmlFor='image'
               className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
             >
-              Imagen de la caracteristica
+              Icono de la caracteristica
             </label>
-            <input
-              type='text'
-              value={image}
-              onChange={handleChangeImage}
-              placeholder='Ingrese la imagen de la caracteristica'
-              id='image'
-              className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-600 focus:ring-blue-600 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
-            />
+            <div>
+              <Select
+                styles={customStyles}
+                value={selectedOption}
+                onChange={handleChangeImage}
+                options={options}
+                placeholder='Seleccione un icono'
+                isClearable={true}
+                components={{
+                  Option: ({ innerProps, data }) => (
+                    <div className='flex align-items-center ' {...innerProps}>
+                      <i
+                        className={`${data.icon} text-2xl w-14 px-2`}
+                      ></i>
+                      <span className='text-center self-center'>{data.label}</span>
+                    </div>
+                  ),
+                  SingleValue: ({ innerProps, data }) => (
+                    <div className='flex w-full' {...innerProps}>
+                      <span className='text-center self-center'>Icono seleccionado: </span>
+                      <i
+                        className={`${data.icon} text-2xl w-11 px-2 justify-self-start`}
+                      ></i>
+                    </div>
+                  )
+                }}
+              />
+            </div>
           </div>
           <div className='col-span-6 flex items-center space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600'>
             <div className='mx-auto'>

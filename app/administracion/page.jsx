@@ -1,20 +1,31 @@
 'use client'
-
-import { useState, useEffect } from 'react'
-import { Row } from './rowProduct'
-import { Form } from './registrar/form'
-import { FormCat } from './registrar/formCategory'
-import { Modal } from './modal'
-import { RowCategory } from './rowCategory'
-import { RowFeature } from './rowFeature'
-import { FormFeature } from './registrar/formFeature'
-import { RowUser } from './rowUser'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { useAuth } from '@/context/authContext'
+import { useState, useEffect } from 'react'
+
+import { Row } from './rows/rowProduct'
+import { RowCategory } from './rows/rowCategory'
+import { RowFeature } from './rows/rowFeature'
+import { RowUser } from './rows/rowUser'
+
+import { Form } from './register-edit/formProduct'
+import { FormCat } from './register-edit/formCategory'
+import { FormFeature } from './register-edit/formFeature'
+import { Modal } from './util/modal'
+
+import Link from 'next/link'
+
+import { Spline_Sans } from 'next/font/google'
+import Table from './util/table'
+import Image from 'next/image'
+const spline = Spline_Sans({
+  weight: '600',
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 export default function Menu() {
   const { user } = useAuth()
-
   const [productPageOpen, setProductPageOpen] = useState(null)
   const [categoryPageOpen, setCategoryPageOpen] = useState(false)
   const [featurePageOpen, setFeaturePageOpen] = useState(false)
@@ -37,18 +48,36 @@ export default function Menu() {
 
   return (
     <ProtectedRoute>
-      <div>
+      <main className={`${spline.className} h-full w-full`}>
         {/* Mostrar en pantallas de 1023 o menos */}
-        <div className='container'>
-          <div className='flex min-h-screen items-center justify-center lg:hidden'>
-            <div
-              className='box-border flex items-center justify-center rounded-lg bg-red-300 p-4 text-lg text-red-800 dark:text-red-600'
-              role='alert'
-            >
-              <p>
-                <span className='font-medium'>Alerta!</span> El panel de
-                administrador no esta disponible en dispositivos móviles
-              </p>
+        <div
+          className='flex h-screen flex-col items-center justify-center pt-10 text-center lg:hidden'
+          role='alert'
+        >
+          <div className='z-10'>
+            <div className='pb-8 text-[18rem] font-bold text-sky-500'>
+              <span>404</span>
+            </div>
+            <div className='px-10 pb-8 text-2xl text-blue-950'>
+              <span>
+                Oops! El panel de administración no se encuentra disponible en
+                dispositivos móviles.
+              </span>
+            </div>
+            <div className='px-12 pb-9 text-xl text-slate-600'>
+              <span>
+                Parece que no se encontró nada en esta ubicación o no puede mostrarse.
+                Puedes volver a la página anterior o ir a la{' '}
+                <span className='text-slate-950'>página de inicio.</span>
+              </span>
+            </div>
+            <div className='py-10'>
+              <Link
+                href='/'
+                className='rounded-md bg-sky-700 px-8 py-4 text-base font-medium text-white hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-blue-800'
+              >
+                Volver al inicio
+              </Link>
             </div>
           </div>
         </div>
@@ -62,9 +91,17 @@ export default function Menu() {
               style={{ minWidth: '200px' }}
             >
               <div className='flex h-14 items-center justify-center border-none px-5'>
-                <img
-                  className='mr-4 h-10 w-10 overflow-hidden rounded-md'
-                  src='https://static.vecteezy.com/system/resources/previews/007/633/306/non_2x/ship-captain-icon-captain-sign-navy-officer-figure-illustration-vector.jpg'
+                <Image
+                  className={`mr-4 w-11 h-11 ${
+                    !user ? 'rounded-none' : 'rounded-full border-2 border-sky-500'
+                  }`}
+                  width={'50'}
+                  height={'50'}
+                  src={
+                    !user || user.photoURL == null
+                      ? 'https://static.vecteezy.com/system/resources/previews/007/633/306/non_2x/ship-captain-icon-captain-sign-navy-officer-figure-illustration-vector.jpg'
+                      : user.photoURL
+                  }
                   alt='foto admin'
                 />
                 <span>{!user ? 'Administrador' : user.displayName}</span>
@@ -210,7 +247,7 @@ export default function Menu() {
                 </li>
               </ul>
             </div>
-            <div className='w-full'>
+            <div className='w-full h-full'>
               {productPageOpen && <PageProduct />}
               {categoryPageOpen && <PageCategory />}
               {featurePageOpen && <PageFeature />}
@@ -218,7 +255,7 @@ export default function Menu() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </ProtectedRoute>
   )
 }
@@ -268,36 +305,18 @@ function PageProduct() {
           </button>
         </div>
         <div className='relative mx-auto mt-12  w-full overflow-x-auto rounded-lg shadow-md'>
-          <table className='mx-auto w-full text-left text-sm text-gray-500 dark:text-gray-400'>
-            <thead className='bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400'>
-              <tr>
-                <th scope='col' className='px-6 py-3'>
-                  <span className='sr-only'>Imagen</span>
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  ID
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Nombre
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  <span className='sr-only'>Eliminar</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map(yacht => (
-                <Row
-                  key={yacht.id}
-                  id={yacht.id}
-                  name={yacht.name}
-                  urlImage={yacht.imageUrl}
-                  category={yacht.category}
-                  features={yacht.feature}
-                />
-              ))}
-            </tbody>
-          </table>
+          <Table>
+            {data.map(yacht => (
+              <Row
+                key={yacht.id}
+                id={yacht.id}
+                name={yacht.name}
+                urlImage={yacht.imageUrl}
+                category={yacht.category}
+                features={yacht.feature}
+              />
+            ))}
+          </Table>
         </div>
 
         <Modal isOpen={modalOpen} onClose={handleCloseModal}>
@@ -343,7 +362,7 @@ function PageCategory() {
 
   return (
     <div className='container min-h-screen w-full'>
-      <div className='hidden min-h-screen lg:block'>
+      <div className='hidden lg:block'>
         <div className='pt-7'>
           <button
             className='rounded border border-sky-500 bg-transparent px-4 py-2 font-semibold text-sky-700 transition ease-in-out hover:border-transparent hover:bg-sky-500 hover:text-white dark:text-white sm:block'
@@ -353,24 +372,7 @@ function PageCategory() {
           </button>
         </div>
         <div className='relative mx-auto mt-12  w-full overflow-x-auto rounded-lg shadow-md'>
-          <table className='mx-auto w-full text-left text-sm text-gray-500 dark:text-gray-400'>
-            <thead className='bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400'>
-              <tr>
-                <th scope='col' className='px-6 py-3'>
-                  <span className='sr-only'>Imagen</span>
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  ID
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Nombre
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  <span className='sr-only'>Eliminar</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+            <Table>
               {data.map(category => (
                 <RowCategory
                   key={category.id}
@@ -379,8 +381,7 @@ function PageCategory() {
                   icon={category.image}
                 />
               ))}
-            </tbody>
-          </table>
+            </Table>
         </div>
         <Modal isOpen={modalCatOpen} onClose={handleCloseModalCat}>
           <FormCat />
@@ -434,25 +435,8 @@ function PageFeature() {
             Registrar Características
           </button>
         </div>
-        <div className='relative mx-auto mt-12 w-full overflow-x-auto rounded-lg shadow-md'>
-          <table className='mx-auto w-full text-left text-sm text-gray-500 dark:text-gray-400'>
-            <thead className='bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400'>
-              <tr>
-                <th scope='col' className='px-6 py-3'>
-                  <span className='sr-only'>Imagen</span>
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  ID
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Nombre
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  <span className='sr-only'>Eliminar</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+        <div className='relative mx-auto mt-12  w-full overflow-x-auto rounded-lg shadow-md'>
+          <Table className='mx-auto w-full text-left text-sm text-gray-500 dark:text-gray-400'>
               {data.map(feature => (
                 <RowFeature
                   key={feature.id}
@@ -461,8 +445,7 @@ function PageFeature() {
                   icon={feature.image}
                 />
               ))}
-            </tbody>
-          </table>
+          </Table>
         </div>
         <Modal isOpen={modalFeatureOpen} onClose={handleCloseModalFeature}>
           <FormFeature />

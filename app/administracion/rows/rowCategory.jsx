@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Modal } from './modal'
-import { FormCat } from './registrar/formCategory'
+import { Modal } from '../util/modal'
+import { FormCat } from '../register-edit/formCategory'
 
 export function RowCategory(props) {
   const { id, name, icon } = props
@@ -28,7 +28,9 @@ export function RowCategory(props) {
     }
   }
 
-  async function handleOnDelete() {
+  async function handleOnDelete(e) {
+    e.preventDefault()
+    e.stopPropagation()
     const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
     const urlDelete = `${hostUrl}/api/category/delete/${id}`
     const opcion = confirm(`Desea eliminar el registro con el id: ${id}`)
@@ -68,8 +70,10 @@ export function RowCategory(props) {
         className='border-b bg-white hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600'
         onClick={handleOpenModalEdit}
       >
-        <td className='px-6 py-4'>
-          <i className={`${icon} text-2xl text-sky-500`}></i>
+        <td className='px-8 py-4'>
+          <i
+            className={`${icon} h-11 w-11 rounded-full text-center text-3xl text-sky-500`}
+          ></i>
         </td>
         <th
           scope='row'
@@ -85,7 +89,22 @@ export function RowCategory(props) {
               onClick={handleOnDelete}
               className='font-medium text-blue-600 hover:underline dark:text-blue-500'
             >
-              Eliminar
+              <svg
+                className='h-6 w-6 text-red-500'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                strokeWidth='2'
+                stroke='currentColor'
+                fill='none'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                {' '}
+                <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                <line x1='18' y1='6' x2='6' y2='18' />{' '}
+                <line x1='6' y1='6' x2='18' y2='18' />
+              </svg>
             </button>
           </div>
         </td>
