@@ -26,8 +26,8 @@ export default function Dropdown({ openMenu }) {
       }`}
     >
       <div className='cursor-pointer rounded-lg p-3 font-semibold hover:bg-slate-200'>
-        <div>Signed in as</div>
-        <div className='truncate'>{user.email}</div>
+        <div>Registrado como</div>
+        <div className='truncate'>{user.displayName}</div>
       </div>
       <Link href='/' className='rounded-lg px-3 py-2 hover:bg-slate-200'>
         <AiOutlineHome className='mr-2 inline-block text-base' />

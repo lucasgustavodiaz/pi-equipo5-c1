@@ -4,12 +4,13 @@ import { AiOutlineSortAscending } from 'react-icons/ai'
 import React from 'react'
 import { CardDetailSearch } from '@/components/screens/search/CardDetailSearch'
 import Filters from '@/components/screens/search/Filters'
+import { dynamicBlurDataUrl } from '@/components/util/dynamicBlurDataUrl'
 
 async function getHeader(params) {
   const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
 
   const response = await fetch(
-    `${hostUrl}/api/yachtByCategoryName/%7BcategoryName%7D?categoryName=${params.id}`,
+    `${hostUrl}/api/productByCategoryName/?categoryName=${params.id}`,
     {
       cache: 'no-store'
     }
@@ -20,6 +21,9 @@ async function getHeader(params) {
 
 export default async function SearchID({ params }) {
   const results = await getHeader(params)
+  const placeHolders = await Promise.all(
+    results.map(product => dynamicBlurDataUrl(`${product.imageUrl}1.png`))
+  )
 
   return (
     <>
@@ -55,14 +59,17 @@ export default async function SearchID({ params }) {
               <div className='grid grid-cols-1 justify-items-center gap-x-6 gap-y-10 pt-10 sm:grid-cols-2 lg:grid-cols-1'>
                 {results &&
                   results.map(
-                    ({
-                      imageUrl,
-                      id,
-                      name,
-                      description,
-                      pricePerDay,
-                      category
-                    }) =>
+                    (
+                      {
+                        imageUrl,
+                        id,
+                        name,
+                        description,
+                        pricePerDay,
+                        category
+                      },
+                      index
+                    ) =>
                       imageUrl !== null ? (
                         <CardDetailSearch
                           key={id}
@@ -72,6 +79,7 @@ export default async function SearchID({ params }) {
                           description={description}
                           pricePerDay={pricePerDay}
                           category={category}
+                          placeHolder={placeHolders[index]}
                         />
                       ) : null
                   )}

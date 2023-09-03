@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, use, useContext, useEffect, useState } from 'react'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -25,31 +25,85 @@ export const useAuth = () => {
   return context
 }
 
+const fetchUserData = async (userData, hostUrl) => {
+  const response = await fetch(`${hostUrl}/users/uid/${userData.uuid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  if (response.ok) {
+    const data = await response.json()
+    return data === true
+  } else {
+    console.error('Error en la solicitud GET al endpoint')
+    throw new Error('Error en la solicitud GET')
+  }
+}
+
+const postUserData = async (userData, hostUrl) => {
+  const response = await fetch(`${hostUrl}/users/createfb`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+
+  if (response.ok) {
+    return true
+  } else {
+    console.error('Error en la solicitud POST al endpoint personalizado')
+    throw new Error('Error en la solicitud POST')
+  }
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
+  const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
 
-  const signup = (email, password, displayName) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredential => {
-        // Una vez que el usuario se ha creado correctamente, actualiza el displayName
-        return updateProfile(userCredential.user, { displayName: displayName })
-          .then(() => {
-            // Devuelve el usuario actualizado con el displayName
-            return userCredential.user
-          })
-          .catch(error => {
-            // Maneja los errores al actualizar el displayName
-            console.error('Error al actualizar el displayName:', error)
-            throw error
-          })
-      })
-      .catch(error => {
-        // Maneja los errores al crear el usuario
-        console.error('Error al crear el usuario:', error)
-        throw error
-      })
+  const signup = async (email, password, displayName) => {
+    try {
+      // Crea el usuario en Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+
+      // Actualiza el displayName
+      await updateProfile(userCredential.user, { displayName: displayName })
+
+      // Construye un objeto con los datos del usuario
+      const userData = {
+        uuid: userCredential.user.uid,
+        email: userCredential.user.email,
+        name: userCredential.user.displayName.split(' ')[0],
+        lastName: userCredential.user.displayName.split(' ')[1],
+        active: true
+      }
+
+      const userExists = await fetchUserData(userData, hostUrl)
+
+      if (userExists) {
+        return userCredential.user
+      } else {
+        const createResponse = await postUserData(userData, hostUrl)
+
+        if (createResponse) {
+          return userCredential.user
+        }
+      }
+    } catch (error) {
+      console.error(
+        'Error al crear el usuario o actualizar el displayName:',
+        error
+      )
+      throw error
+    }
   }
 
   const sendEmail = () => {
@@ -60,15 +114,39 @@ export function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
-  const loginWithGoogle = () => {
-    const googleProvider = new GoogleAuthProvider()
-    return signInWithPopup(auth, googleProvider)
+  const loginWithGoogle = async () => {
+    try {
+      const googleProvider = new GoogleAuthProvider()
+      const userCredential = await signInWithPopup(auth, googleProvider)
+
+      const userData = {
+        uuid: userCredential.user.uid,
+        email: userCredential.user.email,
+        name: userCredential.user.displayName.split(' ')[0],
+        lastName: userCredential.user.displayName.split(' ')[1],
+        active: true
+      }
+
+      const userExists = await fetchUserData(userData, hostUrl)
+
+      if (userExists) {
+        return userCredential.user
+      } else {
+        const createResponse = await postUserData(userData, hostUrl)
+
+        if (createResponse) {
+          return userCredential.user
+        }
+      }
+    } catch (error) {
+      console.error('Error al autenticar con Google:', error)
+      throw error
+    }
   }
 
-  const logout = () => {
-    return signOut(auth).then(() => {
-      router.push('/')
-    })
+  const logout = async () => {
+    await signOut(auth)
+    router.push('/')
   }
 
   const resetPassword = async email => sendPasswordResetEmail(auth, email)

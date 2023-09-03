@@ -66,8 +66,8 @@ export default function Menu() {
             </div>
             <div className='px-12 pb-9 text-xl text-slate-600'>
               <span>
-                Parece que no se encontró nada en esta ubicación o no puede mostrarse.
-                Puedes volver a la página anterior o ir a la{' '}
+                Parece que no se encontró nada en esta ubicación o no puede
+                mostrarse. Puedes volver a la página anterior o ir a la{' '}
                 <span className='text-slate-950'>página de inicio.</span>
               </span>
             </div>
@@ -92,8 +92,10 @@ export default function Menu() {
             >
               <div className='flex h-14 items-center justify-center border-none px-5'>
                 <Image
-                  className={`mr-4 w-11 h-11 ${
-                    !user ? 'rounded-none' : 'rounded-full border-2 border-sky-500'
+                  className={`mr-4 h-11 w-11 ${
+                    !user
+                      ? 'rounded-none'
+                      : 'rounded-full border-2 border-sky-500'
                   }`}
                   width={'50'}
                   height={'50'}
@@ -247,7 +249,7 @@ export default function Menu() {
                 </li>
               </ul>
             </div>
-            <div className='w-full h-full'>
+            <div className='h-full w-full'>
               {productPageOpen && <PageProduct />}
               {categoryPageOpen && <PageCategory />}
               {featurePageOpen && <PageFeature />}
@@ -372,16 +374,16 @@ function PageCategory() {
           </button>
         </div>
         <div className='relative mx-auto mt-12  w-full overflow-x-auto rounded-lg shadow-md'>
-            <Table>
-              {data.map(category => (
-                <RowCategory
-                  key={category.id}
-                  id={category.id}
-                  name={category.name}
-                  icon={category.image}
-                />
-              ))}
-            </Table>
+          <Table>
+            {data.map(category => (
+              <RowCategory
+                key={category.id}
+                id={category.id}
+                name={category.name}
+                icon={category.image}
+              />
+            ))}
+          </Table>
         </div>
         <Modal isOpen={modalCatOpen} onClose={handleCloseModalCat}>
           <FormCat />
@@ -437,14 +439,14 @@ function PageFeature() {
         </div>
         <div className='relative mx-auto mt-12  w-full overflow-x-auto rounded-lg shadow-md'>
           <Table className='mx-auto w-full text-left text-sm text-gray-500 dark:text-gray-400'>
-              {data.map(feature => (
-                <RowFeature
-                  key={feature.id}
-                  id={feature.id}
-                  name={feature.name}
-                  icon={feature.image}
-                />
-              ))}
+            {data.map(feature => (
+              <RowFeature
+                key={feature.id}
+                id={feature.id}
+                name={feature.name}
+                icon={feature.image}
+              />
+            ))}
           </Table>
         </div>
         <Modal isOpen={modalFeatureOpen} onClose={handleCloseModalFeature}>
@@ -457,7 +459,7 @@ function PageFeature() {
 
 function PageUsers() {
   const [data, setData] = useState([])
-  const hostUrl = process.env.NEXT_PUBLIC_USER_URL
+  const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
   const urlGetUser = `${hostUrl}/users/all`
   async function fetchData() {
     try {

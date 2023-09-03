@@ -4,7 +4,7 @@ import SmallGallery from './SmallGallery'
 
 import FullGalery from './FullGalery'
 
-const Galeria = ({ imagesGallery }) => {
+const Galeria = ({ imagesGallery, placeHolders }) => {
   const [button, setButton] = useState(true)
 
   const handleShowMore = () => {
@@ -13,8 +13,10 @@ const Galeria = ({ imagesGallery }) => {
 
   return (
     <div className='relative'>
-      <SmallGallery imagesGallery={imagesGallery} />
-      {!button && <FullGalery imagesGallery={imagesGallery} />}
+      <SmallGallery imagesGallery={imagesGallery} placeHolders={placeHolders} />
+      {!button && (
+        <FullGalery imagesGallery={imagesGallery} placeHolders={placeHolders} />
+      )}
 
       <button
         className='absolute bottom-3 right-5 rounded-lg bg-white px-4 py-2 text-sky-900 transition ease-in-out hover:bg-sky-500 hover:text-white'

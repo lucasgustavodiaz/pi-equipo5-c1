@@ -2,8 +2,10 @@ import Galeria from '@/components/suggested/galeriaImagenes/Galeria'
 import CurrencyFormatter from '@/components/util/CurrencyFormatter'
 import Link from 'next/link'
 import { HiLocationMarker } from 'react-icons/hi'
-import { BsStarFill } from 'react-icons/bs'
+import { BsStarFill, BsStar } from 'react-icons/bs'
 import { ButtonBack } from '@/components/suggested/buttonBack/ButtonBack'
+import Image from 'next/image'
+import { dynamicBlurDataUrl } from '@/components/util/dynamicBlurDataUrl'
 
 const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
 const itemsUrl = `${hostUrl}/api/`
@@ -30,6 +32,11 @@ export default async function Detalle({ params }) {
   const results = await getItem(index)
   // console.log('RESULTS', results)
   const imagesGallery = await getGallery(index)
+  // Create placeholders for images
+  const imgUrls = imagesGallery.map(image => image.url)
+  const placeHolders = await Promise.all(
+    imgUrls.map(url => dynamicBlurDataUrl(url))
+  )
 
   return (
     <div className='bg-[#f2f5fa] p-4 pt-0 sm:p-10 sm:pt-0'>
@@ -40,7 +47,7 @@ export default async function Detalle({ params }) {
               href='/'
               className='transition ease-in-out hover:text-sky-500'
             >
-              Home
+              Inicio
             </Link>
             <span className='px-2'>{'>'}</span>
             <Link
@@ -59,27 +66,31 @@ export default async function Detalle({ params }) {
         className='container rounded-lg bg-[#fcfcfc] pb-10 pt-5'
         href={`/detail/${index}`}
       >
-        <Galeria imagesGallery={imagesGallery} />
+        <Galeria imagesGallery={imagesGallery} placeHolders={placeHolders} />
 
         {/* Container */}
-        <div className='flex flex-col gap-8 pt-6 lg:flex-row'>
+        <div className='flex flex-col items-start gap-8 pt-6 lg:flex-row'>
           {/* Detalles */}
           <div className='1 w-full pt-2'>
+            {/* Product info */}
             <h1 className='pb-5 text-4xl font-bold uppercase text-blue-950'>
               {results.name}
             </h1>
             <div className='flex items-center text-gray-400'>
               <HiLocationMarker className='mr-1 h-4 w-4' />
-              <span className='text-sm font-semibold'>
-                1 WHARF RD, BIRCHGROVE NSW 2041, AUSTRALIA
+              <span className='text-sm font-semibold uppercase'>
+                SANTA ROSA, LA PAMPA, ARGENTINA
               </span>
             </div>
             <div className='mt-4 flex items-center border-b border-t py-4 font-medium text-sky-950'>
-              <span className='pr-3'>8 Guests 9 Beds 2 Baths 5 Cabins</span>
+              <span className='pr-3'>
+                8 Huéspedes 9 Habitaciones 2 Baños 5 Cabinas
+              </span>
               <BsStarFill className='mr-2 inline-block h-[14px] w-[14px] text-sky-500' />
               <span className='font-bold'>4.6/5</span>
             </div>
 
+            {/* Descripcion */}
             <div className='mt-8 border-b pb-8'>
               <h2 className='pb-4 text-2xl font-bold text-sky-950'>
                 Descripción
@@ -87,6 +98,7 @@ export default async function Detalle({ params }) {
               <p className='text-base text-gray-500'>{results.description}</p>
             </div>
 
+            {/* Caracteristicas */}
             <div className='mt-8 border-b pb-8'>
               <h2 className='pb-4 text-2xl font-bold text-sky-950'>
                 Características
@@ -154,9 +166,150 @@ export default async function Detalle({ params }) {
                 </div>
               </div>
             </div>
+
+            {/* Politicas */}
+            <div className='mt-8 border-b pb-8'>
+              <h2 className='pb-6 text-2xl font-bold text-sky-950'>
+                Políticas del producto
+              </h2>
+              <div className='mb-8 flex flex-wrap gap-3 bg-slate-200 px-5 py-5 sm:gap-14 sm:px-12'>
+                <div>
+                  <span className='font-semibold'>Ingreso:</span> 2:00PM
+                </div>
+                <div>
+                  <span className='font-semibold'>Salida:</span> 12:00AM{' '}
+                </div>
+              </div>
+              <div className='wrapper mb-6'>
+                <div className='title mb-1 flex items-center'>
+                  <i className='floaty-icon-life-buoy pr-3 text-2xl text-sky-600 sm:pr-6'></i>
+                  <div className='font-semibold text-gray-950'>
+                    Con o sin capitán
+                  </div>
+                </div>
+                <div className='content'>
+                  <p className='pl-9 text-gray-500 sm:pl-12'>
+                    Puedes navegar el barco tú mismo (se requiere licencia) o
+                    contratar un Capitán durante la reserva.
+                  </p>
+                </div>
+              </div>
+              <div className='wrapper mb-6'>
+                <div className='title mb-1 flex items-center'>
+                  <i className='floaty-icon-bank-note pr-3 text-2xl text-sky-600 sm:pr-6'></i>
+                  <div className='font-semibold text-gray-950'>
+                    Sin cargos adicionales
+                  </div>
+                </div>
+                <div className='content'>
+                  <p className='pl-9 text-gray-500 sm:pl-12'>
+                    El precio total incluye las tasas a pagar en el momento del
+                    check-in (combustible no incluido a menos que se especifique
+                    lo contrario).
+                  </p>
+                </div>
+              </div>
+              <div className='wrapper mb-6'>
+                <div className='title mb-1 flex items-center'>
+                  <i className='floaty-icon-card-check-o pr-3 text-2xl text-sky-600 sm:pr-6'></i>
+                  <div className='font-semibold text-gray-950'>
+                    Pago por adelantado
+                  </div>
+                </div>
+                <div className='content'>
+                  <p className='pl-9 text-gray-500 sm:pl-12'>
+                    Se requiere un prepago del 50% para confirmar su reserva.
+                  </p>
+                </div>
+              </div>
+              <div className='wrapper'>
+                <div className='title mb-1 flex items-center'>
+                  <i className='floaty-icon-calendar-minus pr-3 text-2xl text-sky-600 sm:pr-6'></i>
+                  <div className='font-semibold text-gray-950'>
+                    Política de cancelación
+                  </div>
+                </div>
+                <div className='content'>
+                  <p className='pl-9 text-gray-500 sm:pl-12'>
+                    Flexible: Reembolso total hasta 1 día antes de la llegada,
+                    excluyendo gastos de servicio y comisión de Ocean Winds.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Comentarios */}
+            <div className='mt-8 border-b pb-8'>
+              <h2 className='text-2xl font-bold text-sky-950'>Comentarios</h2>
+              <div className='comment-body flex border-b pb-5 pt-6'>
+                <Image
+                  src='/avatar.png'
+                  alt='avatar'
+                  width={60}
+                  height={60}
+                  className='mr-5 hidden h-[60px] w-[60px] rounded-full sm:block'
+                />
+                <div>
+                  <div>
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                  </div>
+                  <div className='font-semibold'>
+                    Nombre{' '}
+                    <span className='text-sm font-normal text-gray-500'>
+                      - Fechas
+                    </span>
+                  </div>
+                  <div>Quedé muy satisfecho con la atencion del vendedor</div>
+                </div>
+              </div>
+              <div className='comment-body flex border-b pb-5 pt-6'>
+                <Image
+                  src='/avatar.png'
+                  alt='avatar'
+                  width={60}
+                  height={60}
+                  className='mr-5 hidden h-[60px] w-[60px] rounded-full sm:block'
+                />
+                <div>
+                  <div>
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStarFill className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                    <BsStar className='mr-1 inline-block h-[14px] w-[14px] text-sky-500' />
+                  </div>
+                  <div className='font-semibold'>
+                    Nombre{' '}
+                    <span className='text-sm font-normal text-gray-500'>
+                      - Fechas
+                    </span>
+                  </div>
+                  <div>Quedé muy satisfecho con la atencion del vendedor</div>
+                </div>
+              </div>
+              <div className='pt-6'>
+                <h2 className='pb-2 text-xl font-bold text-sky-950'>
+                  Agregar un comentario
+                </h2>
+                <p>
+                  Debes{' '}
+                  <Link
+                    href='/login'
+                    className='font-semibold transition ease-in-out hover:text-sky-500'
+                  >
+                    iniciar sesión
+                  </Link>{' '}
+                  para publicar un comentario.
+                </p>
+              </div>
+            </div>
           </div>
           {/* Reserva */}
-          <div className='w-full rounded-lg border border-gray-100 bg-white shadow-lg shadow-gray-200 lg:max-w-[438px]'>
+          <div className='sticky top-[94px] w-full rounded-lg border border-gray-100 bg-white shadow-lg shadow-gray-200 lg:max-w-[438px]'>
             <div className='px-12 pb-10 pt-5 text-gray-500'>
               <div className='mb-8 flex items-center border-b pb-2'>
                 <span className='pr-2 text-xs font-semibold uppercase'>

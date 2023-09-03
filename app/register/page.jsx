@@ -6,6 +6,8 @@ import { useAuth } from '@/context/authContext'
 import Link from 'next/link'
 import Alert from '@/components/alert'
 import { FcGoogle } from 'react-icons/fc'
+import { BsEyeSlashFill, BsEyeFill } from 'react-icons/bs'
+import Image from 'next/image'
 
 export default function Register() {
   const { signup, loginWithGoogle, sendEmail, user } = useAuth()
@@ -22,8 +24,11 @@ export default function Register() {
     name: '',
     nickname: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   })
+
+  const [visiblePassword, setVisiblePassword] = useState(false)
 
   const [error, setError] = useState('')
 
@@ -46,6 +51,12 @@ export default function Register() {
     // Validación del campo 'nickname'
     if (userForm.nickname.trim() === '') {
       setError('El campo Apellido es obligatorio.')
+      return
+    }
+
+    // Validación de contraseña y confirmación de contraseña
+    if (userForm.password !== userForm.confirmPassword) {
+      setError('Las contraseñas no coinciden.')
       return
     }
 
@@ -72,14 +83,23 @@ export default function Register() {
     setUserForm({ ...userForm, [name]: value })
 
   return (
-    <div className='h-screen bg-[#f2f5fa]'>
+    <div className='min-h-screen bg-[#f2f5fa] pb-10'>
       <div className='container flex justify-center pt-5 sm:pt-10'>
-        <div className='w-full max-w-xs text-sky-950'>
-          {error && <Alert message={error} />}
-          <form
-            onSubmit={handleSubmit}
-            className='mb-4 rounded bg-white px-8 pb-6 pt-6 shadow-md'
-          >
+        <div className='hidden shadow-md sm:block'>
+          <Image
+            src='/form/h2-luxury01.jpg'
+            width={420}
+            height={540}
+            style={{ objectFit: 'cover' }}
+            alt='register image'
+            className='h-full max-h-[504] w-full max-w-[420px] rounded-s '
+          />
+        </div>
+        <div className='w-full max-w-[420px] rounded-e rounded-s bg-white px-8 pb-6 text-sky-950 shadow-md'>
+          <form onSubmit={handleSubmit} className='mb-4 pb-3 pt-6'>
+            <div className='pb-6 text-center text-2xl font-black'>
+              Registrar cuenta
+            </div>
             <div className='mb-4'>
               <label
                 htmlFor='name'
@@ -117,7 +137,7 @@ export default function Register() {
                 htmlFor='email'
                 className='mb-2 block text-sm font-bold text-gray-700'
               >
-                Email
+                Correo electrónico
               </label>
               <input
                 type='email'
@@ -135,18 +155,52 @@ export default function Register() {
               >
                 Contraseña
               </label>
-              <input
-                type='password'
-                name='password'
-                id='password'
-                onChange={handleChange}
-                className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
-                placeholder='*************'
-              />
+              <div className='relative'>
+                <input
+                  type={visiblePassword ? 'text' : 'password'}
+                  name='password'
+                  id='password'
+                  onChange={handleChange}
+                  className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
+                  placeholder='*************'
+                />
+                <div
+                  className='absolute right-1 top-[1.5px] cursor-pointer p-2 text-xl'
+                  onClick={() => setVisiblePassword(!visiblePassword)}
+                >
+                  {visiblePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
+                </div>
+              </div>
             </div>
-            <button className='focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none'>
-              Registrarse
-            </button>
+            <div className='mb-6'>
+              <label
+                htmlFor='confirmPassword'
+                className='mb-2 block text-sm font-bold text-gray-700'
+              >
+                Confirmar contraseña
+              </label>
+              <div className='relative'>
+                <input
+                  type={visiblePassword ? 'text' : 'password'}
+                  name='confirmPassword'
+                  id='confirmPassword'
+                  onChange={handleChange}
+                  className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
+                  placeholder='*************'
+                />
+                <div
+                  className='absolute right-1 top-[1.5px] cursor-pointer p-2 text-xl'
+                  onClick={() => setVisiblePassword(!visiblePassword)}
+                >
+                  {visiblePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
+                </div>
+              </div>
+            </div>
+            <div className='flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between sm:gap-0'>
+              <button className='focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none'>
+                Registrarse
+              </button>
+            </div>
           </form>
           <button
             onClick={handleGoogleSignin}
@@ -155,12 +209,13 @@ export default function Register() {
             <FcGoogle className='mr-2 inline-block text-2xl' />
             Iniciar sesión con Google
           </button>
-          <div className='my-4 flex justify-between px-3 text-sm'>
+          <div className='my-4 flex flex-col items-center gap-3 px-3 text-sm sm:flex-row sm:justify-between sm:gap-0'>
             Ya tenés una cuenta?
             <Link href='/login' className='text-blue-700 hover:text-blue-900'>
               Ingresar
             </Link>
           </div>
+          {error && <Alert message={error} />}
         </div>
       </div>
     </div>

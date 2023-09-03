@@ -17,15 +17,15 @@ export default function HeroSearch() {
         className='h-full w-full brightness-75'
       />
       <div className='z-10'>
-        <h2 className='text-center text-4xl font-bold tracking-[-0.04em] text-slate-50 drop-shadow-md sm:text-6xl'>
-          Search Result
+        <h2 className='text-center text-4xl font-bold tracking-[-0.04em] text-slate-50 drop-shadow-md sm:text-5xl lg:text-6xl'>
+          Resultado de búsqueda
         </h2>
         <div className='flex items-center justify-center pt-5 text-xs font-semibold tracking-tight text-white'>
           <Link href='/' className='transition ease-in-out hover:text-sky-500'>
-            HOME
+            INICIO
           </Link>
           <span className='px-2 text-gray-400'>{'>'}</span>
-          SEARCH RESULT
+          RESULTADO DE BÚSQUEDA
         </div>
       </div>
     </div>

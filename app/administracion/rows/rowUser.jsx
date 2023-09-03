@@ -3,7 +3,7 @@ export function RowUser(props) {
     props
 
   async function handleOnEditRole() {
-    const hostUrl = process.env.NEXT_PUBLIC_USER_URL
+    const hostUrl = process.env.NEXT_PUBLIC_HOST_URL
     const urlEditRole = `${hostUrl}/users/` + id
 
     const opcion = confirm(`Designar como administrador el id: ${id}`)

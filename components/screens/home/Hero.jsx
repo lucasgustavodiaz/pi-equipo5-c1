@@ -1,3 +1,4 @@
+import { staticBlurDataUrl } from '@/components/util/staticBlurDataUrl'
 import Image from 'next/image'
 
 export default function Hero() {
@@ -8,7 +9,7 @@ export default function Hero() {
         alt='hero'
         priority={true}
         loading='eager'
-        blurDataURL='data:...'
+        blurDataURL={staticBlurDataUrl()}
         placeholder='blur'
         fill
         style={{ objectFit: 'cover' }}
